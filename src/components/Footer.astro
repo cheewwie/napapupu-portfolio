@@ -1,0 +1,51 @@
+---
+---
+
+<footer class="site-footer" id="contact">
+  <a href="#contact" class="footer-email">[your@email]</a>
+  <span class="spacer"></span>
+  <span class="footer-tz">Helsinki · UTC+3</span>
+</footer>
+
+<style>
+  .site-footer {
+    box-sizing: border-box;
+    margin-top: auto;
+    padding: 30px 72px;
+    border-top: 1px solid #24331f;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .footer-email {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--tap-min);
+    font-size: 30px;
+    font-weight: var(--weight-heading);
+    letter-spacing: -0.025em;
+    text-decoration: none;
+    color: var(--c-amber);
+  }
+
+  .footer-email:hover,
+  .footer-email:focus-visible {
+    color: var(--c-orange);
+  }
+
+  .footer-tz {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--c-faint);
+  }
+
+  @media (max-width: 900px) {
+    .site-footer {
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+  }
+</style>

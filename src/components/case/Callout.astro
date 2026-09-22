@@ -1,0 +1,28 @@
+---
+/** The one big question/idea a chapter turns on. Amber, matching the
+ * reference — a decorative use the strict accent-role rule would flag, kept
+ * deliberately per the same call made for the homepage's "How I work"
+ * tiles: match the reference as-is. */
+---
+
+<div class="callout">
+  <div class="callout-text">
+    <slot />
+  </div>
+</div>
+
+<style>
+  .callout {
+    padding: 2px 0 2px 24px;
+    border-left: 4px solid var(--c-amber);
+  }
+
+  .callout-text :global(p) {
+    margin: 0;
+    font-size: 21px;
+    line-height: 1.42;
+    font-weight: var(--weight-heading);
+    letter-spacing: -0.015em;
+    color: var(--c-headline);
+  }
+</style>

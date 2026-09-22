@@ -1,0 +1,109 @@
+/* Taiga Sunset — Portfolio 2026
+ * Source of truth for colour and type. Frozen from the design canvas.
+ *
+ * Dark is the default and, for now, the ONLY mode. Do not add a light theme
+ * without deciding the light-ground colours first (see --c-orange-on-light
+ * and --c-pink-on-light at the bottom — the dark accents fail as text there).
+ *
+ * The role comments are not decoration. Each accent has one job and using it
+ * for anything else is the failure mode this file exists to prevent.
+ */
+
+:root {
+  /* ---------------------------------------------------------------- ground */
+  --c-ground: #101A11;          /* page background, content column           */
+  --c-rail: #0B120C;            /* the right rail, darker than the ground    */
+  --c-surface: #17241A;         /* cards, plates, artefact frames            */
+  --c-surface-raised: #1B2A1A;  /* a selected filter chip                    */
+  --c-plate: #162214;           /* index row hover                           */
+
+  --c-hairline: #1D2A1B;        /* row separators inside a list              */
+  --c-border: #2A3A28;          /* visible borders on surfaces               */
+  --c-rule: #38492F;            /* section rules, the strong one             */
+
+  /* ------------------------------------------------------------------ text */
+  --c-headline: #F7F5F0;        /* 16.4:1 — headings, active states          */
+  --c-body: #EDEAE2;            /* 14.8:1 — body copy                        */
+  --c-body-dim: #C9D3C4;        /* subheads, secondary UI text               */
+  --c-muted: #9FB09A;           /*  7.8:1 — supporting copy, metadata        */
+  --c-faint: #7E8F78;           /*  5.2:1 — captions, the quietest text      */
+  --c-disabled: #4C5C48;        /* upcoming chapters, inert markers          */
+
+  /* BANNED: #6E7F69 fails at 4.2:1. It survives in the oldest mockups and in
+   * some of the reference/ snapshots. Use --c-faint instead, always. */
+
+  /* ---------------------------------------------------------------- accents
+   * Fixed roles. One job each.                                              */
+
+  /* AMBER — the dot in all five of its jobs, links, the one primary button,
+   * and anything gated. 9.7:1. */
+  --c-amber: #E8B848;
+
+  /* ORANGE — interaction only: hover and focus, everywhere. 7.5:1.
+   * Never a fill, never decorative, never a second brand colour. */
+  --c-orange: #F09050;
+
+  /* PINK — annotation only: every mark made on someone else's material.
+   * 5.5:1. See annotation-pattern.md. Not an accent for UI. */
+  --c-pink: #E06878;
+
+  /* LEAF — status only: available, open, positive. 6.1:1. */
+  --c-leaf: #75A368;
+
+  /* Palette originals, kept for reference; the tokens above are what to use */
+  --c-pine-shadow: #1A2818;
+  --c-forest-canopy: #385030;
+
+  /* -------------------------------------------------------- project keys
+   * Project key colours come FROM THE CLIENT, not from this palette, so the
+   * set grows with the work. Two gates before adding one:
+   *   1. it must clear 4.5:1 on --c-ground
+   *   2. it must not read as amber, orange or pink
+   * Nudge lightness to pass rather than substituting. Fall back to --c-leaf
+   * only if it cannot be saved. The NDA project has no client colour and will
+   * probably take amber, since amber already means gated.
+   * Current values live in content/projects.json as `dot`. Three of them are
+   * still placeholders and will change when real project data goes in. */
+
+  /* ------------------------------------------------------------------ type */
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-body: 'Space Grotesk', system-ui, sans-serif;
+  --font-mono: 'Space Mono', ui-monospace, monospace;  /* captions, labels,
+                                                        * refs, metadata     */
+
+  --weight-body: 300;
+  --weight-heading: 500;
+  --weight-strong: 600;
+
+  /* Negative letter-spacing ABOVE 21px only. Below that, leave it at normal. */
+  --track-display: -0.035em;   /* 56px+ */
+  --track-title: -0.02em;      /* 24–40px */
+  --track-row: -0.018em;       /* 21px index row titles */
+  --track-mono-label: 0.14em;  /* mono labels are tracked OUT, uppercase */
+  --track-mono-eyebrow: 0.18em;
+
+  /* ------------------------------------------------------------- the grid */
+  /* Dotted notebook ground: content column ONLY, never the rail. */
+  --grid-size: 24px;
+  --grid-dot: rgba(247, 245, 240, 0.06);
+  --grid-offset: 12px;
+
+  /* ---------------------------------------------------------------- shape */
+  --radius-sm: 6px;
+  --radius: 8px;
+  --radius-lg: 10px;
+  --tap-min: 44px;             /* every interactive target, no exceptions */
+
+  /* ----------------------------------------------------------- light ground
+   * Only if a light context ever appears. The dark accents fail as text on
+   * light: orange 2.2:1, pink 3.0:1. */
+  --c-orange-on-light: #8D400C;
+  --c-pink-on-light: #A92335;
+}
+
+/* The dotted grid, applied to the content column only. */
+.dotted {
+  background-image: radial-gradient(circle, var(--grid-dot) 1.1px, transparent 1.2px);
+  background-size: var(--grid-size) var(--grid-size);
+  background-position: var(--grid-offset) var(--grid-offset);
+}

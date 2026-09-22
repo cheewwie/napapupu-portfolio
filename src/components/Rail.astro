@@ -1,0 +1,273 @@
+---
+import type { Project } from '../lib/content';
+
+export interface Props {
+  projects: Project[];
+}
+
+const { projects } = Astro.props;
+
+// Alice has no "On request" projects ready yet — hide the option until she does.
+const SHOW_ON_REQUEST = false;
+
+const accessOptions = [
+  { value: 'all', label: 'Everything' },
+  { value: 'open', label: 'Open' },
+  ...(SHOW_ON_REQUEST ? [{ value: 'on-request', label: 'On request' }] : []),
+];
+
+const userOptions = [
+  { value: 'all', label: 'All users' },
+  { value: 'enterprise', label: 'Enterprise' },
+  { value: 'consumer', label: 'Consumer' },
+];
+
+const deviceOptions = [
+  { value: 'all', label: 'All devices' },
+  { value: 'desktop', label: 'Desktop' },
+  { value: 'mobile', label: 'Mobile' },
+  { value: 'embedded', label: 'Embedded' },
+];
+
+// Default state: every group at "all", so every option's initial count is
+// simply how many projects it would include on its own — the live
+// recompute (given the other two groups' selections) takes over client-side.
+function initialCount(kind: 'access' | 'user' | 'device', value: string): number {
+  if (value === 'all') return projects.length;
+  return projects.filter((p) => {
+    if (kind === 'access') return p.access.toLowerCase().replace(/\s+/g, '-') === value;
+    if (kind === 'user') return p.user.toLowerCase() === value;
+    return p.devices.some((d) => d.toLowerCase() === value);
+  }).length;
+}
+
+const groups = [
+  { key: 'access' as const, label: 'Access', options: accessOptions },
+  { key: 'user' as const, label: 'User', options: userOptions },
+  { key: 'device' as const, label: 'Device', options: deviceOptions },
+];
+---
+
+<aside class="rail" id="rail" tabindex="-1">
+  {
+    projects.length > 0 &&
+      groups.map((group) => (
+        <div class="filter-group">
+          <p class="filter-label" data-filter-label={group.key}>
+            {group.label}
+          </p>
+          <div class="filter-options" role="radiogroup" aria-label={group.label}>
+            {group.options.map((opt, i) => (
+              <button
+                type="button"
+                class="chip"
+                role="radio"
+                aria-checked={i === 0 ? 'true' : 'false'}
+                data-group={group.key}
+                data-value={opt.value}
+              >
+                <span class="chip-dot" aria-hidden="true" />
+                <span class="chip-label">{opt.label}</span>
+                <span class="chip-count" data-count>
+                  {initialCount(group.key, opt.value)}
+                </span>
+              </button>
+            ))}
+          </div>
+        </div>
+      ))
+  }
+
+  <div class="rail-fill"></div>
+
+  <div class="availability">
+    <span class="availability-dot" aria-hidden="true"></span>
+    <span class="availability-label">Free from [Month]</span>
+  </div>
+  <a href="#contact" class="rail-cta">Get in touch</a>
+  <div class="rail-links">
+    <a href="#linkedin">LI</a>
+    <a href="#cv">CV</a>
+  </div>
+</aside>
+
+<style>
+  .rail {
+    width: 240px;
+    flex-shrink: 0;
+    align-self: flex-start;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    box-sizing: border-box;
+    background: var(--c-rail);
+    border-left: 1px solid #24331f;
+    padding: 26px 26px 26px 22px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .filter-group {
+    margin-bottom: 30px;
+  }
+
+  .filter-label {
+    margin: 0 0 12px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: var(--track-mono-label);
+    text-transform: uppercase;
+    color: var(--c-faint);
+  }
+
+  .filter-group:first-child .filter-label {
+    color: var(--c-amber);
+  }
+
+  .filter-options {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .chip {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    min-height: var(--tap-min);
+    box-sizing: border-box;
+    padding: 10px 12px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    text-align: left;
+    border: none;
+    background: transparent;
+    color: var(--c-muted);
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: 500;
+  }
+
+  .chip-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 999px;
+    flex-shrink: 0;
+    background: #3c4f38;
+  }
+
+  .chip-count {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--c-faint);
+  }
+
+  .chip[aria-checked='true'] {
+    background: var(--c-surface-raised);
+    color: var(--c-headline);
+  }
+
+  .chip[aria-checked='true'] .chip-dot {
+    background: var(--c-amber);
+  }
+
+  .chip:hover {
+    color: var(--c-orange);
+  }
+
+  .rail-fill {
+    flex-grow: 1;
+  }
+
+  .availability {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    margin-bottom: 20px;
+  }
+
+  .availability-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 999px;
+    background: var(--c-leaf);
+    display: inline-block;
+  }
+
+  .availability-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    color: var(--c-muted);
+  }
+
+  .rail-cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: var(--tap-min);
+    text-decoration: none;
+    text-align: center;
+    box-sizing: border-box;
+    background: var(--c-amber);
+    color: var(--c-ground);
+    font-size: 15px;
+    font-weight: var(--weight-strong);
+    padding: 14px;
+    border-radius: 999px;
+    margin-bottom: 18px;
+  }
+
+  .rail-cta:hover,
+  .rail-cta:focus-visible {
+    background: var(--c-orange);
+  }
+
+  .rail-links {
+    display: flex;
+    gap: 16px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+  }
+
+  .rail-links a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 24px;
+    color: var(--c-faint);
+    text-decoration: none;
+  }
+
+  .rail-links a:hover,
+  .rail-links a:focus-visible {
+    color: var(--c-orange);
+  }
+
+  /* Below 900px the rail becomes a drawer — same component, relocated, not
+     a second design. See design/README.md and src/scripts/mobileDrawer.ts. */
+  @media (max-width: 900px) {
+    .rail {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: auto;
+      width: min(80%, 380px);
+      height: 100vh;
+      align-self: auto;
+      border-left: 1px solid var(--c-border);
+      border-top: none;
+      padding: 42px 18px 84px;
+      transform: translateX(100%);
+      transition: transform 220ms ease;
+      z-index: 40;
+    }
+
+    .rail.is-open {
+      transform: translateX(0);
+    }
+  }
+</style>

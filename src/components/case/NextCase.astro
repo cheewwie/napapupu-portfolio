@@ -1,0 +1,72 @@
+---
+export interface Props {
+  title: string;
+  slug: string;
+  ref: string;
+}
+
+const { title, slug, ref } = Astro.props;
+---
+
+<footer class="next-case">
+  <span class="next-label">Next</span>
+  <a href={`/work/${slug}/`} class="next-link">Ref {ref} · {title} →</a>
+  <span class="spacer"></span>
+  <a href="#contact" class="next-email">[your@email]</a>
+</footer>
+
+<style>
+  .next-case {
+    box-sizing: border-box;
+    margin-top: auto;
+    padding: 26px 64px;
+    border-top: 1px solid #24331f;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+  }
+
+  .next-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--c-faint);
+  }
+
+  .next-link {
+    text-decoration: none;
+    color: var(--c-headline);
+    font-size: 19px;
+    font-weight: var(--weight-heading);
+    letter-spacing: -0.02em;
+    min-height: var(--tap-min);
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .next-link:hover,
+  .next-link:focus-visible {
+    color: var(--c-orange);
+  }
+
+  .next-email {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--c-faint);
+    text-decoration: none;
+  }
+
+  .next-email:hover,
+  .next-email:focus-visible {
+    color: var(--c-orange);
+  }
+
+  @media (max-width: 900px) {
+    .next-case {
+      padding: 22px 24px;
+    }
+  }
+</style>

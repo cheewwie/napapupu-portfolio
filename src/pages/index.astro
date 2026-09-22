@@ -1,0 +1,55 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import ProjectIndex from '../components/ProjectIndex.astro';
+import HowIWork from '../components/HowIWork.astro';
+import Footer from '../components/Footer.astro';
+import Rail from '../components/Rail.astro';
+import MobileRailOpener from '../components/MobileRailOpener.astro';
+import { getProjects } from '../lib/content';
+
+const projects = await getProjects();
+---
+
+<Layout title="Alice Winter — Product design">
+  <div class="page">
+    <main class="content dotted">
+      <Header />
+      <Hero />
+      {/* Also — writing & speaking is hidden until Alice revisits it; see design/content/also.json */}
+      <ProjectIndex projects={projects} showAlso={false} />
+      <HowIWork />
+      <Footer />
+    </main>
+    <Rail projects={projects} />
+    {projects.length > 0 && <MobileRailOpener eyebrow="Filter" initialValue={`${projects.length} of ${projects.length} · Everything`} />}
+  </div>
+</Layout>
+
+<script>
+  import { initFilters } from '../scripts/filters';
+  import { initMobileDrawer } from '../scripts/mobileDrawer';
+  initFilters();
+  initMobileDrawer();
+</script>
+
+<style>
+  .page {
+    display: flex;
+    min-height: 100vh;
+    background: var(--c-ground);
+    color: var(--c-body);
+  }
+
+  .content {
+    flex-grow: 1;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+
+  /* No flex-direction override needed below 900px — the rail becomes a
+     fixed-position drawer there (Rail.astro), out of normal flow. */
+</style>

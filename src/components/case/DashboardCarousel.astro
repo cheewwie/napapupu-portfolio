@@ -1,0 +1,190 @@
+---
+export interface Tab {
+  label: string;
+  src: string;
+  alt: string;
+}
+
+export interface Props {
+  tabs: Tab[];
+  caption: string;
+}
+
+const { tabs, caption } = Astro.props;
+---
+
+<figure class="carousel-figure" data-artefact>
+  <div class="dashboard-carousel">
+    <div class="carousel-head">
+      <div class="carousel-tabs" role="tablist">
+        {
+          tabs.map((tab, i) => (
+            <button
+              type="button"
+              class="carousel-tab"
+              role="tab"
+              aria-selected={i === 0 ? 'true' : 'false'}
+              data-index={i}
+            >
+              {tab.label}
+            </button>
+          ))
+        }
+      </div>
+      <span class="spacer"></span>
+      <span class="carousel-counter" data-counter>1 / {tabs.length}</span>
+      <button type="button" class="carousel-arrow" data-prev aria-label="Previous dashboard">
+        <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M15 5l-7 7 7 7"></path>
+        </svg>
+      </button>
+      <button type="button" class="carousel-arrow" data-next aria-label="Next dashboard">
+        <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M9 5l7 7-7 7"></path>
+        </svg>
+      </button>
+    </div>
+    <div class="carousel-stage">
+      {
+        tabs.map((tab, i) => (
+          <img src={tab.src} alt={tab.alt} class="carousel-image" hidden={i !== 0} data-index={i} loading="lazy" />
+        ))
+      }
+    </div>
+  </div>
+  <figcaption class="carousel-caption">{caption}</figcaption>
+</figure>
+
+<style>
+  .carousel-figure {
+    margin: 0;
+  }
+
+  .dashboard-carousel {
+    max-width: 760px;
+    box-sizing: border-box;
+    border: 1px solid var(--c-border);
+    border-radius: var(--radius);
+    background: #131f15;
+    overflow: hidden;
+  }
+
+  .carousel-head {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--c-border);
+    background: var(--c-surface);
+  }
+
+  .carousel-tabs {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .carousel-tab {
+    padding: 13px 16px;
+    line-height: 18px;
+    font-family: inherit;
+    font-size: 13px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    background: transparent;
+    border: 1px solid var(--c-border);
+    color: var(--c-body-dim);
+    font-weight: 400;
+  }
+
+  .carousel-tab[aria-selected='true'] {
+    background: var(--c-amber);
+    border-color: var(--c-amber);
+    color: var(--c-ground);
+    font-weight: var(--weight-strong);
+  }
+
+  .carousel-counter {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--c-muted);
+    white-space: nowrap;
+  }
+
+  .carousel-arrow {
+    width: var(--tap-min);
+    height: var(--tap-min);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: 1px solid var(--c-border);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    padding: 0;
+    color: var(--c-body-dim);
+  }
+
+  .carousel-arrow:hover,
+  .carousel-arrow:focus-visible {
+    color: var(--c-orange);
+    border-color: var(--c-orange);
+  }
+
+  .carousel-stage {
+    position: relative;
+  }
+
+  .carousel-image {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .carousel-image[hidden] {
+    display: none;
+  }
+
+  .carousel-caption {
+    margin-top: 12px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    line-height: 1.6;
+    letter-spacing: 0.04em;
+    color: var(--c-faint);
+  }
+</style>
+
+<script>
+  function initDashboardCarousels(): void {
+    const carousels = document.querySelectorAll<HTMLElement>('.dashboard-carousel');
+
+    for (const carousel of carousels) {
+      const tabs = Array.from(carousel.querySelectorAll<HTMLButtonElement>('.carousel-tab'));
+      const images = Array.from(carousel.querySelectorAll<HTMLImageElement>('.carousel-image'));
+      const counter = carousel.querySelector<HTMLElement>('[data-counter]');
+      const prev = carousel.querySelector<HTMLButtonElement>('[data-prev]');
+      const next = carousel.querySelector<HTMLButtonElement>('[data-next]');
+      const total = images.length;
+      if (total === 0) continue;
+
+      let current = 0;
+
+      function show(index: number): void {
+        current = ((index % total) + total) % total;
+        for (const [i, img] of images.entries()) img.hidden = i !== current;
+        for (const [i, tab] of tabs.entries()) tab.setAttribute('aria-selected', String(i === current));
+        if (counter) counter.textContent = `${current + 1} / ${total}`;
+      }
+
+      tabs.forEach((tab, i) => tab.addEventListener('click', () => show(i)));
+      prev?.addEventListener('click', () => show(current - 1));
+      next?.addEventListener('click', () => show(current + 1));
+    }
+  }
+
+  initDashboardCarousels();
+</script>

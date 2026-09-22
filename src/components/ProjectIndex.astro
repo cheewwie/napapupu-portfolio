@@ -1,0 +1,394 @@
+---
+import { also, slugify, type Project } from '../lib/content';
+
+export interface Props {
+  projects: Project[];
+  /** "Also — writing & speaking" is content Alice hasn't gotten to yet. */
+  showAlso?: boolean;
+}
+
+const { projects, showAlso = false } = Astro.props;
+
+const accessSlug = (value: string) => slugify(value);
+const fieldSlug = (value: string) => slugify(value);
+---
+
+<section class="index-section" aria-labelledby="projects-heading">
+  <div class="index-head">
+    <h2 id="projects-heading" class="index-label">Projects</h2>
+    <span class="spacer"></span>
+    {
+      projects.length > 0 && (
+        <span class="index-count" id="projects-count">
+          {projects.length} of {projects.length}
+        </span>
+      )
+    }
+  </div>
+
+  {
+    projects.length === 0 ? (
+      <p class="index-empty">No case studies published yet — check back soon.</p>
+    ) : (
+      <Fragment>
+        <div class="index-columns" aria-hidden="true">
+          <span></span>
+          <span>Description</span>
+          <span>User</span>
+          <span>Device</span>
+          <span>Year</span>
+          <span>Access</span>
+        </div>
+
+        <div id="projects-list">
+          {projects.map((project) => (
+            <a
+              href={`/work/${project.slug}/`}
+              class="idx-row"
+              data-ref={project.slug}
+              data-access={accessSlug(project.access)}
+              data-user={fieldSlug(project.user)}
+              data-devices={project.devices.map(fieldSlug).join(' ')}
+            >
+              <span class="idx-row-head">
+                <span class="idx-dot" style={{ background: project.dot }} />
+                <span class="idx-copy">
+                  <span class="idx-title">{project.title}</span>
+                  <span class="idx-blurb">{project.blurb}</span>
+                </span>
+              </span>
+
+              <span class="idx-field idx-field--user">
+                <span class="idx-field-label">User</span>
+                <span class="idx-field-value">{project.user}</span>
+              </span>
+              <span class="idx-field idx-field--device">
+                <span class="idx-field-label">Device</span>
+                <span class="idx-field-value idx-field-value--pre">{project.devices.join('\n')}</span>
+              </span>
+              <span class="idx-field idx-field--year">
+                <span class="idx-field-label">Year</span>
+                <span class="idx-field-value idx-field-value--mono">{project.year}</span>
+              </span>
+              <span class="idx-field idx-field--access">
+                <span class="idx-field-label">Access</span>
+                <span class:list={['idx-access-pill', { 'idx-access-pill--gated': project.access === 'On request' }]}>
+                  {project.access}
+                </span>
+              </span>
+            </a>
+          ))}
+        </div>
+
+        <p id="projects-empty" class="index-empty" hidden>
+          Nothing matches those two filters. Clear one to see more.
+        </p>
+      </Fragment>
+    )
+  }
+</section>
+
+{
+  showAlso && (
+    <section class="index-section index-section--also" id="also-section" aria-labelledby="also-heading">
+      <div class="index-head index-head--quiet">
+        <h2 id="also-heading" class="index-label index-label--quiet">
+          Also — writing &amp; speaking
+        </h2>
+      </div>
+
+      {also.map((entry) => (
+        <a href="#entry" class="idx-also">
+          <span class="idx-also-dot" aria-hidden="true" />
+          <span class="idx-also-title">{entry.title}</span>
+          <span class="idx-also-kind">{entry.kind}</span>
+          <span class="idx-also-dash" aria-hidden="true">
+            —
+          </span>
+          <span class="idx-also-year">{entry.year}</span>
+          <span class="idx-also-fill" aria-hidden="true" />
+        </a>
+      ))}
+    </section>
+  )
+}
+
+<style>
+  .index-section {
+    box-sizing: border-box;
+    padding: 30px 72px 0;
+  }
+
+  .index-section--also {
+    padding-top: 40px;
+  }
+
+  .index-head {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    padding: 0 0 14px;
+    border-bottom: 1px solid var(--c-rule);
+  }
+
+  .index-head--quiet {
+    padding-bottom: 10px;
+    border-bottom-color: #24331f;
+  }
+
+  .index-label {
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: var(--track-mono-label);
+    text-transform: uppercase;
+    color: var(--c-body);
+    font-weight: 700;
+  }
+
+  .index-label--quiet {
+    color: var(--c-faint);
+  }
+
+  .index-count {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--c-faint);
+  }
+
+  .index-columns {
+    display: grid;
+    grid-template-columns: 22px minmax(0, 1fr) 78px 76px 54px 94px;
+    column-gap: 14px;
+    align-items: center;
+    padding: 12px 0 10px;
+    border-bottom: 1px solid var(--c-hairline);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--c-faint);
+  }
+
+  .idx-row {
+    display: grid;
+    grid-template-columns: 22px minmax(0, 1fr) 78px 76px 54px 94px;
+    column-gap: 14px;
+    align-items: center;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--c-hairline);
+    text-decoration: none;
+    color: var(--c-body);
+    background: transparent;
+    transition: background-color 120ms ease;
+  }
+
+  .idx-row:hover {
+    background-color: var(--c-plate);
+  }
+
+  .idx-row:active {
+    background-color: #1e2f1c;
+  }
+
+  .idx-row:focus-visible {
+    outline-offset: -2px;
+  }
+
+  .idx-row[hidden] {
+    display: none;
+  }
+
+  /* On desktop these wrappers stay invisible in the box tree, so their
+     children land directly in the row's grid columns as before. */
+  .idx-row-head,
+  .idx-field {
+    display: contents;
+  }
+
+  .idx-field-label {
+    display: none;
+  }
+
+  .idx-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 999px;
+    display: inline-block;
+  }
+
+  .idx-copy {
+    display: block;
+    padding-right: 14px;
+  }
+
+  .idx-title {
+    display: block;
+    font-size: 21px;
+    font-weight: var(--weight-heading);
+    letter-spacing: var(--track-row);
+    color: var(--c-headline);
+    margin-bottom: 5px;
+  }
+
+  .idx-blurb {
+    display: block;
+    font-size: 15px;
+    line-height: 1.45;
+    color: var(--c-muted);
+    font-weight: var(--weight-body);
+  }
+
+  .idx-field-value {
+    font-size: 14px;
+    line-height: 1.45;
+    color: var(--c-muted);
+  }
+
+  .idx-field-value--pre {
+    white-space: pre-line;
+  }
+
+  .idx-field-value--mono {
+    font-family: var(--font-mono);
+    font-size: 12px;
+  }
+
+  .idx-access-pill {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 6px 11px;
+    border-radius: 999px;
+    justify-self: start;
+    color: var(--c-muted);
+    background: var(--c-hairline);
+  }
+
+  .idx-access-pill--gated {
+    color: var(--c-ground);
+    background: var(--c-amber);
+  }
+
+  .index-empty {
+    margin: 0;
+    padding: 40px 0;
+    font-size: 15px;
+    color: var(--c-muted);
+  }
+
+  .idx-also {
+    display: grid;
+    grid-template-columns: 22px minmax(0, 1fr) 78px 76px 54px 94px;
+    column-gap: 14px;
+    align-items: center;
+    padding: 13px 0;
+    border-bottom: 1px solid #162115;
+    text-decoration: none;
+    color: var(--c-body-dim);
+    background: transparent;
+    transition: background-color 120ms ease;
+  }
+
+  .idx-also:hover {
+    background-color: #131f13;
+  }
+
+  .idx-also:active {
+    background-color: #182618;
+  }
+
+  .idx-also-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 999px;
+    background: #3c4f38;
+    display: inline-block;
+  }
+
+  .idx-also-title {
+    font-size: 16px;
+    font-weight: 400;
+    padding-right: 14px;
+  }
+
+  .idx-also-kind,
+  .idx-also-year {
+    font-size: 13px;
+    color: var(--c-faint);
+  }
+
+  .idx-also-year {
+    font-family: var(--font-mono);
+    font-size: 11px;
+  }
+
+  .idx-also-dash {
+    font-size: 13px;
+    color: var(--c-disabled);
+  }
+
+  /* Mobile: each row goes vertical — title, blurb, then label/value pairs.
+     A stopgap, not the finished mobile pass; see the rail's own note. */
+  @media (max-width: 900px) {
+    .index-section {
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+
+    .index-columns {
+      display: none;
+    }
+
+    .idx-row {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 10px;
+      padding: 22px 0;
+    }
+
+    .idx-row-head {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .idx-dot {
+      margin-top: 7px;
+      flex-shrink: 0;
+    }
+
+    .idx-copy {
+      padding-right: 0;
+    }
+
+    .idx-field {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .idx-field-label {
+      display: block;
+      flex-shrink: 0;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--c-faint);
+    }
+
+    .idx-field-value {
+      text-align: right;
+    }
+
+    .idx-access-pill {
+      justify-self: auto;
+    }
+  }
+</style>

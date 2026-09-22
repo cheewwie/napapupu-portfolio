@@ -1,0 +1,92 @@
+---
+export interface Props {
+  eyebrowCategory: string;
+  year: string;
+  readTime: string;
+  title: string;
+  dek: string;
+  dot: string;
+}
+
+const { eyebrowCategory, year, readTime, title, dek, dot } = Astro.props;
+---
+
+<section class="case-hero">
+  <div class="case-eyebrow">
+    <span class="case-eyebrow-dot" style={{ background: dot }}></span>
+    <span class="case-eyebrow-text">{eyebrowCategory} · {year} • {readTime}</span>
+  </div>
+  <h1 class="case-title">
+    {title}<span class="case-title-dot" aria-hidden="true"></span>
+  </h1>
+  <p class="case-dek">{dek}</p>
+</section>
+
+<style>
+  .case-hero {
+    box-sizing: border-box;
+    padding: 52px 64px 34px;
+  }
+
+  .case-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 18px;
+  }
+
+  .case-eyebrow-dot {
+    width: 11px;
+    height: 11px;
+    border-radius: 999px;
+    display: inline-block;
+    flex-shrink: 0;
+  }
+
+  .case-eyebrow-text {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: var(--track-mono-label);
+    text-transform: uppercase;
+    color: var(--c-muted);
+  }
+
+  .case-title {
+    margin: 0 0 20px;
+    max-width: 880px;
+    font-size: 62px;
+    line-height: 1.02;
+    font-weight: var(--weight-heading);
+    letter-spacing: var(--track-display);
+    color: var(--c-headline);
+  }
+
+  .case-title-dot {
+    display: inline-block;
+    width: 0.13em;
+    height: 0.13em;
+    border-radius: 999px;
+    background: var(--c-amber);
+    margin-left: 0.06em;
+    vertical-align: baseline;
+  }
+
+  .case-dek {
+    margin: 0;
+    max-width: 780px;
+    font-size: 20px;
+    line-height: 1.6;
+    color: var(--c-muted);
+    font-weight: var(--weight-body);
+  }
+
+  @media (max-width: 900px) {
+    .case-hero {
+      padding: 32px 24px 24px;
+    }
+
+    .case-title {
+      font-size: 40px;
+    }
+  }
+</style>
