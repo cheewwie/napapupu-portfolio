@@ -1,0 +1,74 @@
+[
+  {
+    "ref": "01",
+    "title": "A digital Key Account Manager",
+    "blurb": "Turning a bunch of legacy, fragmented services into a vision for one single, consistent ecosystem.",
+    "sectors": ["Logistics"],
+    "user": "Enterprise",
+    "devices": ["Desktop"],
+    "platform": "Web app",
+    "year": "2021",
+    "access": "Open",
+    "dot": "#E3732D"
+  },
+  {
+    "ref": "02",
+    "title": "Snowsports in real time, all the time",
+    "blurb": "Live results and other stats for people standing on a mountain, wearing gloves, in the cold.",
+    "sectors": ["Sports"],
+    "user": "Consumer",
+    "devices": ["Mobile"],
+    "platform": "Native app",
+    "year": "2023-24",
+    "access": "Open",
+    "dot": "#3E5EB5"
+  },
+  {
+    "ref": "03",
+    "title": "Finnish dates in your pocket",
+    "blurb": "A modern mobile app for an outdated web dating service.",
+    "sectors": ["Dating"],
+    "user": "Consumer",
+    "devices": ["Mobile"],
+    "platform": "Native app",
+    "year": "2018-19",
+    "access": "Open",
+    "dot": "#DA4E96"
+  },
+  {
+    "ref": "04",
+    "title": "Flying window to happiness",
+    "blurb": "A new vision for a modern and accessible In-Flight Entertainment (IFE) system.",
+    "sectors": ["Aviation"],
+    "user": "Consumer",
+    "devices": ["Embedded"],
+    "platform": "Web app",
+    "year": "2024-25",
+    "access": "On request",
+    "dot": "#00A2DF"
+  },
+  {
+    "ref": "05",
+    "title": "A new way to manage enterprise documents",
+    "blurb": "A new proof of concept for migrating a complex information management system to Microsoft Power Apps.",
+    "sectors": [],
+    "user": "Enterprise",
+    "devices": ["Desktop"],
+    "platform": "Web app",
+    "year": "2025",
+    "access": "Open",
+    "dot": "#FFC600"
+  },
+  {
+    "ref": "06",
+    "title": "One smarthouse app to rule them all",
+    "blurb": "Lights, climate, cameras, locks, appliances controls, and insights on utilities, all in one place.",
+    "sectors": [],
+    "user": "Consumer",
+    "devices": ["Embedded", "Mobile"],
+    "platform": "Web app",
+    "year": "2026",
+    "access": "Open",
+    "dot": "#D5B077"
+  }
+]

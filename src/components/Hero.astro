@@ -1,0 +1,90 @@
+---
+---
+
+<section class="hero">
+  <p class="eyebrow">Product design · Helsinki, Finland</p>
+  <h1 class="hero-title">
+    I design solutions for <span class="hero-annotated">real human beings</span><span
+      class="hero-dot"
+      aria-hidden="true"></span>
+  </h1>
+  <p class="hero-lede">
+    For the last eight years I designed digital products and services, for enterprise and
+    consumers, for all sorts of devices, for web and native, and always for people.
+  </p>
+</section>
+
+<style>
+  .hero {
+    box-sizing: border-box;
+    padding: 62px 72px 44px;
+  }
+
+  .eyebrow {
+    margin: 0 0 24px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: var(--track-mono-eyebrow);
+    text-transform: uppercase;
+    color: var(--c-amber);
+  }
+
+  .hero-title {
+    margin: 0;
+    max-width: 940px;
+    font-size: 64px;
+    line-height: 1.04;
+    font-weight: var(--weight-heading);
+    letter-spacing: var(--track-display);
+    color: var(--c-headline);
+  }
+
+  .hero-annotated {
+    position: relative;
+    display: inline-block;
+    white-space: nowrap;
+  }
+
+  /* The annotation gesture, borrowed from the marked-up draft: pink, not UI. */
+  .hero-annotated::after {
+    content: '';
+    position: absolute;
+    left: -0.28em;
+    right: -0.28em;
+    top: -0.16em;
+    bottom: -0.09em;
+    border: 0.05em solid var(--c-pink);
+    border-radius: 50%;
+    transform: rotate(-1.2deg);
+  }
+
+  .hero-dot {
+    display: inline-block;
+    width: 0.13em;
+    height: 0.13em;
+    border-radius: 999px;
+    background: var(--c-amber);
+    margin-left: 0.06em;
+    vertical-align: baseline;
+  }
+
+  .hero-lede {
+    margin: 26px 0 0;
+    max-width: 720px;
+    font-size: 19px;
+    line-height: 1.62;
+    color: var(--c-muted);
+    font-weight: var(--weight-body);
+  }
+
+  @media (max-width: 900px) {
+    .hero {
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+
+    .hero-title {
+      font-size: 44px;
+    }
+  }
+</style>

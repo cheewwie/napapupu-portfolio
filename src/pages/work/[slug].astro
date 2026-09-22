@@ -1,0 +1,94 @@
+---
+import { render, type CollectionEntry } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import CaseHero from '../../components/case/CaseHero.astro';
+import SpecStrip from '../../components/case/SpecStrip.astro';
+import HeroFigure from '../../components/case/HeroFigure.astro';
+import CaseRail from '../../components/case/CaseRail.astro';
+import NextCase from '../../components/case/NextCase.astro';
+import MobileRailOpener from '../../components/MobileRailOpener.astro';
+import { getWorkEntries } from '../../lib/content';
+import '../../styles/case-prose.css';
+
+export async function getStaticPaths() {
+  const entries = await getWorkEntries();
+
+  return entries.map((entry, i) => ({
+    params: { slug: entry.id },
+    props: { entry, next: entries[(i + 1) % entries.length] },
+  }));
+}
+
+interface Props {
+  entry: CollectionEntry<'work'>;
+  next: CollectionEntry<'work'>;
+}
+
+const { entry, next } = Astro.props;
+const { data } = entry;
+const { Content } = await render(entry);
+const nextRef = String(next.data.order).padStart(2, '0');
+---
+
+<Layout title={`${data.title} — Alice Winter`} description={data.dek}>
+  <div class="page">
+    <main class="content dotted">
+      <Header />
+      <CaseHero
+        eyebrowCategory={data.eyebrowCategory}
+        year={data.year}
+        readTime={data.readTime}
+        title={data.title}
+        dek={data.dek}
+        dot={data.dot}
+      />
+      <SpecStrip client={data.client} role={data.role} duration={data.duration} outcome={data.outcome} access={data.access} />
+      <HeroFigure caption={data.heroCaption} dot={data.dot} src={data.heroSrc} alt={data.heroAlt} />
+      <section class="chapters">
+        <Content />
+      </section>
+      <NextCase title={next.data.title} slug={next.id} ref={nextRef} />
+    </main>
+    <CaseRail />
+    <MobileRailOpener eyebrow="On this page" initialValue="" />
+  </div>
+</Layout>
+
+<script>
+  import { initChapterNav } from '../../scripts/chapterNav';
+  import { initArtefactToggle } from '../../scripts/artefactToggle';
+  import { initMobileDrawer } from '../../scripts/mobileDrawer';
+  initChapterNav();
+  initArtefactToggle();
+  initMobileDrawer();
+</script>
+
+<style>
+  .page {
+    display: flex;
+    min-height: 100vh;
+    background: var(--c-ground);
+    color: var(--c-body);
+  }
+
+  .content {
+    flex-grow: 1;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+
+  .chapters {
+    box-sizing: border-box;
+    padding: 0 64px;
+    flex-grow: 1;
+  }
+
+  @media (max-width: 900px) {
+    .chapters {
+      padding: 0 24px;
+    }
+  }
+</style>

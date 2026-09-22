@@ -1,0 +1,284 @@
+---
+title: A digital Key Account Manager
+blurb: Turning a bunch of legacy, fragmented services into a vision for one single, consistent ecosystem.
+sectors: [Logistics]
+user: Enterprise
+devices: [Desktop]
+platform: Web app
+year: '2021'
+access: Open
+dot: '#E3732D'
+order: 1
+eyebrowCategory: Product vision
+readTime: 4 min read
+dek: Turning a bunch of legacy, fragmented services into the vision for one single, consistent ecosystem. And managing several stakeholders who didn't necessarily see the problem.
+client: Posti Group Oyj
+role: [Lead designer, Strategic designer]
+duration: 8 months
+outcome: Enablers and feature initiatives started
+heroCaption: Concept dashboard, Nov 2021
+heroSrc: /case-assets/OPP-hero.jpg
+heroAlt: "Two overlapping OmaPosti Pro dashboard windows, one behind the other, each showing a different signed-in user. The front window shows customer satisfaction over the last seven days trending steady, parcels currently ordered/sent/in transport/delivered/delayed as a bar chart, a notifications panel with none pending, a promoted tip about giving customers peace of mind over home delivery, and a news item about home deliveries getting an upgrade. The side navigation carries Tracking, Reports and Integrations under Tools, and Business account and My account under Account settings."
+---
+
+import Chapter from '../../components/case/Chapter.astro';
+import Artefact from '../../components/case/Artefact.astro';
+import Callout from '../../components/case/Callout.astro';
+import Pullquote from '../../components/case/Pullquote.astro';
+import DashboardCarousel from '../../components/case/DashboardCarousel.astro';
+
+<Chapter n="01" title="Context">
+
+Posti had launched OmaPosti Pro, a modern "digital home for corporate customers". The MVP shipped in early 2021 without a long-term vision for the business goals:
+
+- Reduce customer churn
+- Replace expensive legacy systems
+- Simplify the channels ecosystem
+
+<Callout>How might we leverage OmaPosti Pro to improve the end-to-end SME customer experience and their retention?</Callout>
+
+<Artefact
+  src="/case-assets/channels-ecosystem-start.png"
+  alt={`Channels ecosystem at the start of the project: seven separate products drawn as boxes — Posti.fi for anything not requiring a login, My Account for personal data, OmaPosti for ordering and tracking shipments, Glue for dropshipping and warehousing, Kontakti for registry and marketing, a Developer portal for API credentials, and Other services — joined by separate "log in" arrows rather than by one account.`}
+  caption="CHANNELS ECOSYSTEM AT THE START OF THE PROJECT – or rather a bunch of standalone products"
+  dot="#E3732D"
+/>
+
+</Chapter>
+
+<Chapter
+  n="02"
+  title="Discover"
+  did={['Explore existing research', 'Stakeholders interviews', 'SME customers lifecycle mapping with operations']}
+>
+
+### Customers insights
+
+- Services are all over the place
+- Complex and unfair pricing
+- People with different jobs in the same company use different services
+
+### Business insights
+
+- Two value propositions for two categories, neither clear to customers
+- Siloed development and a limiting architecture
+- Complex, fragmented ecosystem that is hard to maintain
+
+### Operations insights
+
+- Onboarding a customer can take weeks
+- New customers are soon left on their own
+- Everything is done manually
+
+<Artefact
+  src="/case-assets/sme-customer-lifecycle.png"
+  alt="The SME customer lifecycle map as a workshop board: five service stages across the top — initial need, research, customer acquisition, customer onboarding, growth — split into Before and During, with a swimlane under each for the customer's steps and then for telesales, sales support, customer service, marketing, communication, and invoicing and claims. Hundreds of sticky notes fill the lanes; three customer profiles sit in frames down the left."
+  caption="SME CUSTOMER LIFECYCLE — mapped with operations, i.e. telesales, sales support and customer service"
+  dot="#E3732D"
+/>
+
+</Chapter>
+
+<Chapter
+  n="03"
+  title="Explore"
+  did={['Stakeholders cocreation workshops', 'Analyse other complex digital ecosystems', 'Formulate vision', 'Ideate concepts']}
+>
+
+### Vision draft
+
+Co-created with stakeholders, the first draft is quite a mouthful — but it got everyone on the same page, and a checkpoint validation from the steering group.
+
+<Artefact
+  src="/case-assets/vision-draft-1.png"
+  alt={`Vision draft 1, marked up: the sentence "Your business' companion, supporting your growth with seamlessly interconnected, personalised solutions for your daily tasks." with four phrases circled in pink — your growth, interconnected, personalised, daily tasks — and an arrow from each to a note naming what it would take: customer data and segmentation, a collaboration model and team structure, and user insights into roles, needs, goals and JTBD.`}
+  caption="VISION DRAFT 1 — co-created with stakeholders"
+  dot="#E3732D"
+/>
+
+<div data-artefact-fallback>
+  <Callout>"Your business' companion, supporting your growth with seamlessly interconnected, personalised solutions for your daily tasks."</Callout>
+</div>
+
+### Tools and channels map
+
+If everything is eventually to live in one place, we needed to know how it looks until then. I mapped every service, where it is needed in the customer lifecycle, and which channel it should live in.
+
+<Artefact
+  src="/case-assets/tools-and-channels.png"
+  alt="Tools and channels map: a logged-out business experience — discover the offering, become a customer, get help — leading through one access-management log-in into a logged-in business experience, where every job is grouped by what the user is trying to do (manage account, get help, pay, receive and support customers, manage stock, understand my business, market my business, send, sell) and each item is coloured by whether it lives in OmaPosti Pro or another touchpoint, with asterisks marking ideas not yet built."
+  caption="TOOLS AND CHANNELS — every service in the channel it belongs to"
+  dot="#E3732D"
+/>
+
+### Concept exploration: user roles
+
+Access rights are assigned per feature, per product — a long list, and not very accessible.
+
+<Artefact
+  src="/case-assets/user-roles-access-model.png"
+  alt="The user roles access model: a table with a row per role — warehouse, developer, customer service, sales, business, marketing, finance, and an All row at the foot — and two columns, the jobs that role can do and the channels it reaches. Warehouse creates shipments, prints labels, picks and packs; the developer gets API keys and installs plugins; everyone can get help and manage their own details. Titled 'Access rights follow the role, not the feature or the product'."
+  caption="USER ROLES MATRIX — first version, rather a way to explain the concept of user roles than a foundation document"
+  dot="#E3732D"
+/>
+
+This idea bundles them under labels matching people's roles in their company, "customer service" for example.
+
+</Chapter>
+
+<Chapter
+  n="04"
+  title="Deliver"
+  did={['Stakeholders cocreation workshops', 'Analyse other complex digital ecosystems', 'Formulate vision', 'Ideate concepts']}
+>
+
+### The vision
+
+Customers (companies) and users (people) have very different needs, so I split the vision. It also makes it easier to digest.
+
+<div class="vision-split">
+  <div class="vision-card" style="border-top-color: #75A368">
+    <p class="vision-card-headline">A digital Key Account Manager to support SME customers' growth</p>
+    <p class="vision-card-sub">For SME customers</p>
+  </div>
+  <div class="vision-card" style="border-top-color: #F09050">
+    <p class="vision-card-headline">The heart of our business users' digital experience</p>
+    <p class="vision-card-sub">For business users</p>
+  </div>
+</div>
+
+### New key concepts
+
+What the vision means concretely — the new key concepts:
+
+<ul class="two-col">
+  <li>User roles</li>
+  <li>Dashboard</li>
+  <li>In-app notifications</li>
+  <li>Sandbox mode</li>
+  <li>Digital marketing and sales</li>
+  <li>User onboarding to OmaPosti Pro</li>
+  <li>Cross-channel navigation</li>
+  <li>Self-service customership management</li>
+  <li>Self-service customer service</li>
+  <li>Contextual onboarding to tools and services</li>
+  <li>Peers community</li>
+</ul>
+
+I built a story around a hypothetical customer and its three employees, and drafted the journeys that make its "chapters".
+
+<Artefact
+  src="/case-assets/customer-story-journeys.png"
+  alt="The customer story as a workshop board: twelve numbered narrative beats down the left — set up an online store, become a Posti customer, send shipments, troubleshoot fulfilment, set up a return contract, integrate an API, hire — each tagged with the touchpoints and teams it involves, and each opening out to the right into a step-by-step journey swimlane labelled Owner, Sender or Developer."
+  caption="THE STORY — one hypothetical customer, three users, and their journeys through Posti's services"
+  dot="#E3732D"
+/>
+
+<DashboardCarousel
+  caption="THREE DASHBOARDS – the same page shows different content and data, depending on its viewer's user role(s)"
+  tabs={[
+    {
+      label: 'Business owner',
+      src: '/case-assets/dashboard-business-owner.png',
+      alt: 'The OmaPosti Pro dashboard as a business owner sees it, annotated: customer satisfaction over the last seven days, parcel status, a promoted tip and a news item, with the side navigation carrying Tracking, Reports and Integrations. Marks point out the dashboard itself, in-app notifications, the user-role switcher, cross-channel navigation, customership management and two digital-marketing placements.',
+    },
+    {
+      label: 'Fulfilment manager',
+      src: '/case-assets/dashboard-fulfilment-manager.png',
+      alt: 'The same dashboard as a fulfilment manager sees it, annotated: parcel status, outgoing shipments with a delayed one flagged, shipments to hand over, incoming shipments and the next pickup, with the side navigation carrying Send and Track. Marks point out the dashboard, in-app notifications, the user-role switcher and cross-channel navigation.',
+    },
+    {
+      label: 'Developer',
+      src: '/case-assets/dashboard-developer.png',
+      alt: 'The same dashboard as a developer sees it, annotated: API calls and errors for the Shopify shipping app, notifications, and a link to open starter help, with the side navigation carrying Integrations and Community. Marks point out the dashboard, in-app notifications, the user-role switcher, cross-channel navigation, the peer community and user onboarding.',
+    },
+  ]}
+/>
+
+Most key concepts are missing a foundation:
+
+- Reducing technical dependencies on consumer channels
+- Thinking in journeys to show the business value to freemium services
+- Customer segmentation and lifecycle
+- Users profiles
+- Simple pricing system
+- Simple customership system
+
+<Pullquote attribution="Product Owner · Posti Group" accent="#E3732D">
+This is great work and finally we have this kind of overall concepting about Pro (first version, I know) that can also help the steering of our future development. Looks great and can't wait!!!
+</Pullquote>
+
+</Chapter>
+
+<Chapter n="05" title="Results">
+
+### Investments
+
+Business and technical stakeholders were enthusiastic — some so much that they started moving without telling me, bringing tools into OmaPosti Pro I hadn't expected a green light on for a long time.
+
+In early 2022 we prioritised investment themes for the year. Matching the legacy application's functionality was still the highest priority, but enablers of this vision were next to it. From Q2 2022, enabling initiatives started.
+
+<Pullquote attribution="Head of Corporate Services · Posti Group" accent="#E3732D">
+More than we asked for!
+</Pullquote>
+
+### New mandate for designers
+
+I had found so many black holes in our knowledge, that I was also campaigning for research and for being more customer-centric. It worked: I gained a mandate to research without asking, where I had previously hit walls when suggesting we talk to customers.
+
+<Pullquote attribution="Head of Design · Posti Group" accent="#E3732D">
+Alice's work with business experience and OmaPosti Pro has taken our design maturity and vision in corporate services to the next level, and the great collaboration across channels, CS and key stakeholders has created massive impact on both CX and our ways of working.
+</Pullquote>
+
+</Chapter>
+
+<Chapter n="06" title="Learnings">
+
+### Storytelling
+
+The concept was broad, so I told it as the story of a hypothetical customer. A first for me at that scale — and the comments said it made the complex concept easy to grasp.
+
+### Saying no(t now)
+
+The project was massive and needed focus. After juggling it all spring and summer with other projects, I set myself a deadline and dropped everything else in the autumn so I could finally deliver.
+
+</Chapter>
+
+<Chapter n="07" title="Team">
+
+<div class="team-list">
+  <div class="team-row">
+    <span class="team-dot" style="width: 13px; height: 13px; background: #E3732D; margin-top: 1px"></span>
+    <div>
+      <p class="team-role">Core team</p>
+      <p class="team-text">Alice · Lead designer, Business Experience&nbsp;&nbsp;|&nbsp;&nbsp;Business owner, OmaPosti Pro</p>
+    </div>
+  </div>
+  <div class="team-row">
+    <span class="team-dot" style="width: 11px; height: 11px; background: #7E8F78; margin-top: 2px"></span>
+    <div>
+      <p class="team-role">Accountable</p>
+      <p class="team-text">Head of corporate services</p>
+    </div>
+  </div>
+  <div class="team-row">
+    <span class="team-dot" style="width: 9px; height: 9px; background: #4C5C48; margin-top: 3px"></span>
+    <div>
+      <p class="team-role">Contributors</p>
+      <p class="team-text">Business Experience Designers</p>
+    </div>
+  </div>
+  <div class="team-row">
+    <span class="team-dot" style="width: 7px; height: 7px; background: #3C4F38; margin-top: 4px"></span>
+    <div>
+      <p class="team-role">Consulted</p>
+      <p class="team-text">Product Owners · Business Managers · Vice President, SME &amp; Consumer services · Designers · Customer Service · Telesales · Sales Support</p>
+    </div>
+  </div>
+</div>
+
+</Chapter>
+
+{/* Chapter 08 — On request (shipped screens, client name, decisions I'd
+    make differently) is stashed until Alice has real gated content ready.
+    The Gated component is still here for when she is. */}

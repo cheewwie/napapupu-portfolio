@@ -1,0 +1,43 @@
+---
+export interface Props {
+  attribution: string;
+  /** Defaults to the project's own key colour. */
+  accent?: string;
+}
+
+const { attribution, accent = 'var(--c-orange)' } = Astro.props;
+---
+
+<blockquote class="pullquote" style={{ borderColor: accent }}>
+  <div class="pullquote-text">
+    <slot />
+  </div>
+  <footer class="pullquote-attribution">{attribution}</footer>
+</blockquote>
+
+<style>
+  .pullquote {
+    margin: 0;
+    padding: 2px 0 2px 24px;
+    border-left: 4px solid;
+  }
+
+  .pullquote-text :global(p) {
+    margin: 0 0 14px;
+    font-size: 21px;
+    line-height: 1.5;
+    color: var(--c-headline);
+    font-weight: var(--weight-body);
+  }
+
+  .pullquote-text :global(p:last-child) {
+    margin-bottom: 0;
+  }
+
+  .pullquote-attribution {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--c-muted);
+  }
+</style>

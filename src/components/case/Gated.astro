@@ -1,0 +1,100 @@
+---
+export interface Props {
+  title: string;
+  body: string;
+  note?: string;
+}
+
+const { title, body, note = 'Usually same day.' } = Astro.props;
+---
+
+<div class="gated">
+  <div class="gated-icon" aria-hidden="true">
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="var(--c-ground)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="10" width="16" height="10" rx="2"></rect>
+      <path d="M8 10V7a4 4 0 0 1 8 0v3"></path>
+    </svg>
+  </div>
+  <div class="gated-body">
+    <h2 class="gated-title">{title}</h2>
+    <p class="gated-text">{body}</p>
+    <div class="gated-actions">
+      <a href="#request" class="gated-cta">Request access</a>
+      <span class="gated-note">{note}</span>
+    </div>
+  </div>
+</div>
+
+<style>
+  .gated {
+    max-width: 760px;
+    box-sizing: border-box;
+    border: 1px solid var(--c-disabled);
+    background: var(--c-surface);
+    border-radius: var(--radius);
+    padding: 24px 26px;
+    display: flex;
+    gap: 22px;
+    align-items: flex-start;
+  }
+
+  .gated-icon {
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+    border-radius: 999px;
+    background: var(--c-amber);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .gated-body {
+    flex-grow: 1;
+  }
+
+  .gated-title {
+    margin: 0 0 9px;
+    font-size: 22px;
+    font-weight: var(--weight-strong);
+    letter-spacing: -0.02em;
+    color: var(--c-headline);
+  }
+
+  .gated-text {
+    margin: 0 0 18px;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--c-muted);
+  }
+
+  .gated-actions {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  .gated-cta {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--tap-min);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: var(--weight-strong);
+    color: var(--c-ground);
+    background: var(--c-amber);
+    padding: 0 20px;
+    border-radius: 999px;
+  }
+
+  .gated-cta:hover,
+  .gated-cta:focus-visible {
+    background: var(--c-orange);
+  }
+
+  .gated-note {
+    font-size: 14px;
+    color: var(--c-muted);
+  }
+</style>

@@ -1,0 +1,60 @@
+---
+export interface Props {
+  src: string;
+  alt: string;
+  caption: string;
+  /** Defaults to the project's own key colour. */
+  dot?: string;
+}
+
+const { src, alt, caption, dot = 'var(--c-amber)' } = Astro.props;
+---
+
+<figure class="artefact" data-artefact>
+  <div class="artefact-frame">
+    <img src={src} alt={alt} loading="lazy" />
+  </div>
+  <figcaption class="artefact-caption">
+    <span class="artefact-dot" style={{ background: dot }} aria-hidden="true"></span>
+    <span>{caption}</span>
+  </figcaption>
+</figure>
+
+<style>
+  .artefact {
+    margin: 0;
+  }
+
+  .artefact-frame {
+    width: 100%;
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: var(--c-surface);
+  }
+
+  .artefact-frame img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .artefact-caption {
+    margin-top: 12px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    line-height: 1.6;
+    letter-spacing: 0.04em;
+    color: var(--c-faint);
+  }
+
+  .artefact-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    flex-shrink: 0;
+    margin-top: 4px;
+  }
+</style>

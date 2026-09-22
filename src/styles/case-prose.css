@@ -1,0 +1,171 @@
+/* Typography for chapter bodies rendered from MDX — global, not
+   Astro-scoped, because MDX content isn't tagged by the component that
+   slots it in. Chapters are content; this is the shared "reading" layer
+   underneath them. */
+
+/* The rail's "Show artefacts" toggle (src/scripts/artefactToggle.ts).
+   The hero figure is never tagged data-artefact, so it's unaffected. */
+[data-artefact-fallback] {
+  display: none;
+}
+
+body.artefacts-hidden [data-artefact] {
+  display: none;
+}
+
+body.artefacts-hidden [data-artefact-fallback] {
+  display: block;
+}
+
+.chapter-body > * {
+  margin: 0;
+}
+
+.chapter-body p {
+  font-size: 18px;
+  line-height: 1.65;
+  color: var(--c-muted);
+  font-weight: var(--weight-body);
+}
+
+.chapter-body h3 {
+  font-size: 20px;
+  font-weight: var(--weight-heading);
+  letter-spacing: -0.01em;
+  color: var(--c-body-dim);
+}
+
+.chapter-body ul {
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.chapter-body ul.two-col {
+  display: block;
+  column-count: 2;
+  column-gap: 28px;
+}
+
+.chapter-body ul.two-col li {
+  break-inside: avoid;
+  margin-bottom: 8px;
+}
+
+.chapter-body li {
+  position: relative;
+  padding-left: 16px;
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--c-muted);
+  font-weight: var(--weight-body);
+}
+
+.chapter-body li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 5px;
+  height: 5px;
+  border-radius: 999px;
+  background: #3c4f38;
+}
+
+.chapter-body strong {
+  color: var(--c-body-dim);
+  font-weight: var(--weight-strong);
+}
+
+.chapter-body a {
+  color: var(--c-amber);
+}
+
+.chapter-body a:hover,
+.chapter-body a:focus-visible {
+  color: var(--c-orange);
+}
+
+/* Two-up highlight cards — e.g. a vision statement split by audience. */
+.vision-split {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.vision-card {
+  box-sizing: border-box;
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-top: 4px solid var(--c-leaf);
+  border-radius: var(--radius-sm);
+  padding: 24px;
+}
+
+.vision-card-headline {
+  margin: 0 0 7px;
+  font-size: 34px;
+  font-weight: var(--weight-strong);
+  letter-spacing: -0.03em;
+  color: var(--c-headline);
+}
+
+.vision-card-sub {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--c-muted);
+}
+
+/* Team / roles list — dot size signals distance from the work. */
+.team-list {
+  max-width: 760px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-top: 5px;
+}
+
+.team-row {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.team-dot {
+  flex-shrink: 0;
+  border-radius: 999px;
+}
+
+.team-role {
+  margin: 0 0 8px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--c-body-dim);
+}
+
+.team-text {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--c-muted);
+  font-weight: var(--weight-body);
+}
+
+@media (max-width: 900px) {
+  .vision-split {
+    grid-template-columns: 1fr;
+  }
+
+  .vision-card-headline {
+    font-size: 26px;
+  }
+
+  .chapter-body ul.two-col {
+    column-count: 1;
+  }
+}

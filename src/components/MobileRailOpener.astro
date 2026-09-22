@@ -1,0 +1,146 @@
+---
+/**
+ * The rail becomes a drawer below 900px — one component that relocates,
+ * not two designs (design/README.md, "Decided since the export"). This is
+ * the opener bar + scrim; the drawer itself is the existing #rail element,
+ * repositioned by CSS at the same breakpoint. See src/scripts/mobileDrawer.ts.
+ */
+export interface Props {
+  eyebrow: string;
+  initialValue: string;
+}
+
+const { eyebrow, initialValue } = Astro.props;
+---
+
+<div class="rail-scrim" id="rail-scrim" aria-hidden="true"></div>
+
+<button type="button" class="rail-opener" id="rail-opener" aria-expanded="false" aria-controls="rail">
+  <span class="rail-opener-body">
+    <span class="rail-opener-eyebrow">{eyebrow}</span>
+    <span class="rail-opener-value">
+      <span class="rail-opener-dot" aria-hidden="true"></span>
+      <span id="rail-opener-value-text">{initialValue}</span>
+    </span>
+  </span>
+  <span class="rail-opener-action rail-opener-action--closed" aria-hidden="true">
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M6 15l6-6 6 6"></path>
+    </svg>
+  </span>
+  <span class="rail-opener-action rail-opener-action--open" aria-hidden="true">
+    Close
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M6 9l6 6 6-6"></path>
+    </svg>
+  </span>
+</button>
+
+<style>
+  .rail-scrim,
+  .rail-opener {
+    display: none;
+  }
+
+  @media (max-width: 900px) {
+    .rail-scrim {
+      display: block;
+      position: fixed;
+      inset: 0;
+      background: rgba(11, 18, 12, 0.84);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 220ms ease;
+      z-index: 30;
+    }
+
+    .rail-scrim.is-open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .rail-opener {
+      display: flex;
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      width: min(80%, 380px);
+      z-index: 50;
+      box-sizing: border-box;
+      min-height: var(--tap-min);
+      padding: 13px 18px max(29px, env(safe-area-inset-bottom, 29px));
+      align-items: center;
+      gap: 14px;
+      text-align: left;
+      background: var(--c-surface);
+      border: none;
+      border-top: 1px solid var(--c-border);
+      border-left: 1px solid var(--c-border);
+      border-radius: var(--radius-lg) 0 0 0;
+      cursor: pointer;
+      font-family: inherit;
+      color: inherit;
+    }
+
+    .rail-opener-body {
+      flex-grow: 1;
+      min-width: 0;
+    }
+
+    .rail-opener-eyebrow {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: var(--track-mono-label);
+      text-transform: uppercase;
+      color: var(--c-faint);
+      margin-bottom: 5px;
+    }
+
+    .rail-opener-value {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--c-headline);
+      overflow: hidden;
+    }
+
+    #rail-opener-value-text {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .rail-opener-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      background: var(--c-amber);
+      flex-shrink: 0;
+    }
+
+    .rail-opener-action {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      flex-shrink: 0;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--c-headline);
+    }
+
+    .rail-opener-action--open {
+      display: none;
+    }
+
+    .rail-opener.is-open .rail-opener-action--closed {
+      display: none;
+    }
+
+    .rail-opener.is-open .rail-opener-action--open {
+      display: flex;
+    }
+  }
+</style>

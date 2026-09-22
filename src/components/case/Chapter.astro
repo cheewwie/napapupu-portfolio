@@ -1,0 +1,120 @@
+---
+/**
+ * A numbered chapter: label (+ optional "what I did" box) in a fixed-width
+ * left column, content in the right column. Reusable structure — the
+ * content inside is authored per case study, not modelled further; see
+ * design/README.md's closing note on chapters being content.
+ *
+ * data-n / data-title let the rail's chapter nav (src/scripts/chapterNav.ts)
+ * build itself from the rendered page rather than a duplicated list.
+ */
+export interface Props {
+  n: string;
+  title: string;
+  did?: string[];
+}
+
+const { n, title, did } = Astro.props;
+---
+
+<article class="chapter" id={`c${n}`} data-n={n} data-title={title}>
+  <div class="chapter-aside">
+    <p class="chapter-label">{n} — {title}</p>
+    {
+      did && did.length > 0 && (
+        <div class="did-box">
+          <p class="did-label">What I did</p>
+          <ul class="did-list">
+            {did.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </div>
+      )
+    }
+  </div>
+  <div class="chapter-body">
+    <slot />
+  </div>
+</article>
+
+<style>
+  .chapter {
+    display: grid;
+    grid-template-columns: minmax(140px, 220px) minmax(0, 1fr);
+    gap: clamp(20px, 4vw, 44px);
+    align-items: start;
+    padding: 34px 0;
+  }
+
+  .chapter-label {
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: var(--track-mono-label);
+    text-transform: uppercase;
+    padding-top: 5px;
+    color: var(--c-faint);
+  }
+
+  .did-box {
+    box-sizing: border-box;
+    background: var(--c-surface);
+    border: 1px solid var(--c-border);
+    border-radius: var(--radius);
+    padding: 16px;
+    margin-top: 16px;
+  }
+
+  .did-label {
+    margin: 0 0 9px;
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: var(--track-mono-label);
+    text-transform: uppercase;
+    color: var(--c-faint);
+  }
+
+  .did-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+  }
+
+  .did-list li {
+    position: relative;
+    padding-left: 13px;
+    font-size: 13px;
+    line-height: 1.45;
+    color: var(--c-muted);
+    font-weight: var(--weight-body);
+  }
+
+  .did-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 7px;
+    width: 4px;
+    height: 4px;
+    border-radius: 999px;
+    background: #3c4f38;
+  }
+
+  .chapter-body {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    max-width: 760px;
+  }
+
+  @media (max-width: 900px) {
+    .chapter {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+  }
+</style>

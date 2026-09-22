@@ -1,0 +1,258 @@
+---
+/**
+ * The case-study hero, after the title and spec strip per design/README.md.
+ * Renders a real screenshot when the case study has one (`src`); otherwise
+ * falls back to an abstract, drawn-not-photographed stand-in so the page
+ * still reads as finished before that asset exists.
+ */
+export interface Props {
+  caption: string;
+  dot: string;
+  src?: string;
+  alt?: string;
+}
+
+const { caption, dot, src, alt } = Astro.props;
+---
+
+<section class="hero-figure-section">
+  <figure class="hero-figure">
+    {
+      src ? (
+        <div class="hero-shot">
+          <img src={src} alt={alt ?? ''} loading="eager" />
+        </div>
+      ) : (
+        <div class="hero-plate" aria-hidden="true">
+          <div class="hero-glow"></div>
+          <div class="hero-orb"></div>
+          <div class="hero-card">
+            <div class="hero-card-nav">
+              <span class="bar bar--wide" style="width: 70%"></span>
+              <span class="bar" style="width: 88%"></span>
+              <span class="bar" style="width: 74%"></span>
+              <span class="bar" style="width: 82%"></span>
+              <span class="bar" style="width: 60%"></span>
+            </div>
+            <div class="hero-card-main">
+              <span class="bar bar--dark" style="width: 34%"></span>
+              <div class="hero-card-row">
+                <div class="hero-chart">
+                  <span style="height: 40%; background: #385030"></span>
+                  <span style="height: 66%; background: #385030"></span>
+                  <span style="height: 52%; background: #75A368"></span>
+                  <span style="height: 82%; background: #F09050"></span>
+                  <span style="height: 60%; background: #385030"></span>
+                </div>
+                <div class="hero-panel">
+                  <span class="bar bar--muted" style="width: 80%"></span>
+                  <span class="bar bar--muted" style="width: 64%"></span>
+                  <span class="bar bar--muted" style="width: 72%"></span>
+                  <span class="hero-pill"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )
+    }
+    <figcaption class="hero-figure-caption">
+      <span class="hero-figure-dot" style={{ background: dot }}></span>
+      <span>{caption}</span>
+    </figcaption>
+  </figure>
+</section>
+
+<style>
+  .hero-figure-section {
+    box-sizing: border-box;
+    padding: 0 64px 40px;
+  }
+
+  .hero-figure {
+    margin: 0;
+  }
+
+  .hero-shot {
+    width: 100%;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background: var(--c-surface);
+  }
+
+  .hero-shot img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .hero-plate {
+    width: 100%;
+    height: 430px;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    position: relative;
+    background: linear-gradient(145deg, #2e4526 0%, #172416 58%, #241a22 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero-glow {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 190px;
+    background: radial-gradient(ellipse 620px 190px at 34% 100%, rgba(240, 144, 80, 0.34), rgba(16, 26, 17, 0) 100%);
+  }
+
+  .hero-orb {
+    position: absolute;
+    right: 78px;
+    top: 58px;
+    width: 168px;
+    height: 168px;
+    border-radius: 999px;
+    background: radial-gradient(circle at 36% 32%, var(--c-amber), var(--c-orange) 66%, rgba(240, 144, 80, 0) 100%);
+  }
+
+  .hero-card {
+    position: relative;
+    width: 660px;
+    max-width: 90%;
+    height: 300px;
+    border-radius: var(--radius-lg);
+    background: var(--c-headline);
+    box-shadow: 0 26px 70px rgba(0, 0, 0, 0.55);
+    box-sizing: border-box;
+    padding: 18px;
+    display: flex;
+    gap: 14px;
+    overflow: hidden;
+  }
+
+  .hero-card-nav {
+    width: 118px;
+    flex-shrink: 0;
+    background: #e7ede4;
+    border-radius: var(--radius-sm);
+    padding: 12px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+  }
+
+  .hero-card-nav .bar--wide {
+    margin-bottom: 5px;
+  }
+
+  .bar {
+    display: block;
+    height: 7px;
+    background: #c6d2c1;
+    border-radius: 999px;
+  }
+
+  .bar--wide {
+    height: 8px;
+    background: #385030;
+  }
+
+  .bar--dark {
+    height: 11px;
+    background: var(--c-ground);
+    border-radius: 999px;
+  }
+
+  .bar--muted {
+    background: #c6c1b4;
+    margin-bottom: 10px;
+  }
+
+  .hero-card-main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .hero-card-row {
+    flex-grow: 1;
+    display: flex;
+    gap: 12px;
+  }
+
+  .hero-chart {
+    flex-grow: 1;
+    background: #efede6;
+    border-radius: var(--radius-sm);
+    padding: 12px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: flex-end;
+    gap: 7px;
+  }
+
+  .hero-chart span {
+    width: 15%;
+    border-radius: 3px 3px 0 0;
+  }
+
+  .hero-panel {
+    width: 40%;
+    background: #efede6;
+    border-radius: var(--radius-sm);
+    padding: 12px;
+    box-sizing: border-box;
+  }
+
+  .hero-pill {
+    display: block;
+    height: 22px;
+    width: 74px;
+    background: var(--c-amber);
+    border-radius: 999px;
+  }
+
+  .hero-figure-caption {
+    margin-top: 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    color: var(--c-faint);
+  }
+
+  .hero-figure-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    flex-shrink: 0;
+    display: inline-block;
+  }
+
+  @media (max-width: 900px) {
+    .hero-figure-section {
+      padding: 0 24px 32px;
+    }
+
+    .hero-plate {
+      height: 260px;
+    }
+
+    .hero-card {
+      width: 90%;
+      height: 200px;
+      padding: 12px;
+      gap: 10px;
+    }
+
+    .hero-card-nav {
+      width: 70px;
+    }
+  }
+</style>
