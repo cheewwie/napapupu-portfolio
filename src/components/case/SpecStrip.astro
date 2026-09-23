@@ -70,7 +70,7 @@ const fields = [
 
   .spec-label {
     font-family: var(--font-mono);
-    font-size: 10px;
+    font-size: var(--fs-label);
     letter-spacing: var(--track-mono-label);
     text-transform: uppercase;
     color: var(--c-faint);
@@ -79,7 +79,7 @@ const fields = [
 
   .spec-value {
     margin: 0;
-    font-size: 17px;
+    font-size: var(--fs-body);
     font-weight: var(--weight-heading);
     color: var(--c-body);
   }
@@ -89,19 +89,20 @@ const fields = [
       padding: 0 24px 24px;
     }
 
+    /* Stacked, one field per line; the padding keeps the first and last
+       fields off the top and bottom rules. */
     .spec-grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      row-gap: 16px;
+      grid-template-columns: minmax(0, 1fr);
+      row-gap: 18px;
+      padding: 20px 0;
     }
 
-    .spec-field {
-      border-right: none;
-      padding: 0 12px;
-    }
-
+    /* Flush left, in line with the rest of the page content. */
+    .spec-field,
     .spec-field:first-child,
     .spec-field:last-child {
-      padding: 0 12px;
+      border-right: none;
+      padding: 0;
     }
   }
 </style>

@@ -17,12 +17,22 @@
     border-left: 4px solid var(--c-amber);
   }
 
-  .callout-text :global(p) {
-    margin: 0;
-    font-size: 21px;
+  /* Type sits on the wrapper, not the <p>: one-line MDX content is not
+     wrapped in a paragraph, and would otherwise fall back to 16px. */
+  .callout-text {
+    font-size: var(--fs-row);
     line-height: 1.42;
     font-weight: var(--weight-heading);
-    letter-spacing: -0.015em;
-    color: var(--c-headline);
+    letter-spacing: var(--track-row);
+    color: var(--c-body);
+  }
+
+  /* Inherit from the wrapper: `.chapter-body p` would otherwise give
+     multi-paragraph quotes the muted prose style. */
+  .callout-text :global(p) {
+    margin: 0;
+    font: inherit;
+    letter-spacing: inherit;
+    color: inherit;
   }
 </style>

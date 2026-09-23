@@ -55,7 +55,7 @@ const { title, body, note = 'Usually same day.' } = Astro.props;
 
   .gated-title {
     margin: 0 0 9px;
-    font-size: 22px;
+    font-size: var(--fs-row);
     font-weight: var(--weight-strong);
     letter-spacing: -0.02em;
     color: var(--c-headline);
@@ -63,7 +63,7 @@ const { title, body, note = 'Usually same day.' } = Astro.props;
 
   .gated-text {
     margin: 0 0 18px;
-    font-size: 15px;
+    font-size: var(--fs-small);
     line-height: 1.6;
     color: var(--c-muted);
   }
@@ -80,7 +80,7 @@ const { title, body, note = 'Usually same day.' } = Astro.props;
     align-items: center;
     min-height: var(--tap-min);
     text-decoration: none;
-    font-size: 14px;
+    font-size: var(--fs-small);
     font-weight: var(--weight-strong);
     color: var(--c-ground);
     background: var(--c-amber);
@@ -94,7 +94,7 @@ const { title, body, note = 'Usually same day.' } = Astro.props;
   }
 
   .gated-note {
-    font-size: 14px;
+    font-size: var(--fs-small);
     color: var(--c-muted);
   }
 </style>

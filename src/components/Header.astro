@@ -13,7 +13,7 @@ const SHOW_ABOUT = false;
       fill="none"
       aria-hidden="true"
     >
-      <circle cx="27.748" cy="126.127" r="27.748" fill="var(--c-amber)"></circle>
+      <circle class="brand-tail" cx="27.748" cy="126.127" r="27.748" fill="var(--c-amber)"></circle>
       <path
         fill-rule="evenodd"
         clip-rule="evenodd"
@@ -52,9 +52,16 @@ const SHOW_ABOUT = false;
   }
 
   .brand-name {
-    font-size: 17px;
+    font-size: var(--fs-body);
     font-weight: var(--weight-strong);
     letter-spacing: -0.012em;
+  }
+
+  /* The whole lockup takes the hover colour: body, name and tail. The only
+     time the tail leaves amber; see design/brand/README.md. */
+  .brand:hover,
+  .brand:focus-visible {
+    color: var(--c-orange);
   }
 
   .brand:hover .brand-mark,
@@ -62,11 +69,16 @@ const SHOW_ABOUT = false;
     color: var(--c-orange);
   }
 
+  .brand:hover .brand-tail,
+  .brand:focus-visible .brand-tail {
+    fill: var(--c-orange);
+  }
+
   .nav-link {
     display: inline-flex;
     align-items: center;
     min-height: var(--tap-min);
-    font-size: 15px;
+    font-size: var(--fs-small);
     font-weight: 500;
     color: var(--c-muted);
     text-decoration: none;
@@ -87,7 +99,7 @@ const SHOW_ABOUT = false;
     border-radius: 999px;
     background: var(--c-amber);
     color: var(--c-ground);
-    font-size: 15px;
+    font-size: var(--fs-small);
     font-weight: var(--weight-strong);
     text-decoration: none;
   }

@@ -27,16 +27,23 @@ const { attribution, accent = 'var(--case-dot)' } = Astro.props;
     border-left: 4px solid;
   }
 
+  /* Type sits on the blockquote, not the <p>, so one-line content (which
+     MDX doesn't wrap in a paragraph) gets the same size. */
   .pullquote-text {
     margin: 0 0 14px;
+    font-size: var(--fs-row);
+    line-height: 1.5;
+    color: var(--c-body);
+    font-weight: var(--weight-body);
   }
 
+  /* Inherit from the wrapper: `.chapter-body p` would otherwise give
+     multi-paragraph quotes the muted prose style. */
   .pullquote-text :global(p) {
     margin: 0 0 14px;
-    font-size: 21px;
-    line-height: 1.5;
-    color: var(--c-headline);
-    font-weight: var(--weight-body);
+    font: inherit;
+    letter-spacing: inherit;
+    color: inherit;
   }
 
   .pullquote-text :global(p:last-child) {
@@ -45,7 +52,7 @@ const { attribution, accent = 'var(--case-dot)' } = Astro.props;
 
   .pullquote-attribution {
     font-family: var(--font-mono);
-    font-size: 11px;
+    font-size: var(--fs-caption);
     letter-spacing: 0.08em;
     color: var(--c-muted);
   }
