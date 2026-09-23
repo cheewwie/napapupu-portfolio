@@ -1,25 +1,34 @@
 ---
+/**
+ * A feedback quote: a colleague, client or stakeholder's verdict on the
+ * work. Not for users' or participants' words — that is ResearchQuote. See
+ * design/quote-pattern.md.
+ */
 export interface Props {
   attribution: string;
-  /** Defaults to the project's own key colour. */
+  /** Defaults to the project's own key colour, set as --case-dot by the case-study page. */
   accent?: string;
 }
 
-const { attribution, accent = 'var(--c-orange)' } = Astro.props;
+const { attribution, accent = 'var(--case-dot)' } = Astro.props;
 ---
 
-<blockquote class="pullquote" style={{ borderColor: accent }}>
-  <div class="pullquote-text">
+<figure class="pullquote" style={{ borderColor: accent }}>
+  <blockquote class="pullquote-text">
     <slot />
-  </div>
-  <footer class="pullquote-attribution">{attribution}</footer>
-</blockquote>
+  </blockquote>
+  <figcaption class="pullquote-attribution">{attribution}</figcaption>
+</figure>
 
 <style>
   .pullquote {
     margin: 0;
     padding: 2px 0 2px 24px;
     border-left: 4px solid;
+  }
+
+  .pullquote-text {
+    margin: 0 0 14px;
   }
 
   .pullquote-text :global(p) {

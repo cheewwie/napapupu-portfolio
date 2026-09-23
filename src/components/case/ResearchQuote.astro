@@ -1,0 +1,93 @@
+---
+/**
+ * A research quote: users', customers' or participants' own words, as
+ * evidence under the finding they support. Not for colleague or client
+ * feedback — that is Pullquote. Who is speaking decides which one; see
+ * design/quote-pattern.md.
+ *
+ * Put the text in the slot without typed quotation marks: the hanging mark
+ * is decorative and the blockquote already carries the meaning.
+ *
+ * Outside a ResearchQuotes cluster it carries its own "In their words"
+ * label; inside one, the cluster's label replaces it.
+ */
+export interface Props {
+  /** Who the participant is, e.g. "Cross-country skiing fan". Required. Never a name. */
+  source: string;
+  /** Participant code, e.g. "P04". */
+  code?: string;
+  /** How it was gathered, e.g. "Interview". */
+  method?: string;
+  year?: string | number;
+}
+
+const { source, code, method, year } = Astro.props;
+
+const methodYear = [method, year].filter(Boolean).join(', ');
+const attribution = [code, source, methodYear].filter(Boolean).join(' · ');
+---
+
+<div class="research-quote">
+  <p class="research-quote-label">In their words</p>
+  <figure class="research-quote-figure">
+    <span class="research-quote-mark" aria-hidden="true">“</span>
+    <blockquote class="research-quote-text">
+      <slot />
+    </blockquote>
+    <figcaption class="research-quote-attribution">{attribution}</figcaption>
+  </figure>
+</div>
+
+<style>
+  .research-quote-label {
+    margin: 0 0 16px 34px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--c-faint);
+  }
+
+  /* The cluster shows the label once for all of its quotes. */
+  :global(.research-quotes) .research-quote-label {
+    display: none;
+  }
+
+  .research-quote-figure {
+    position: relative;
+    margin: 0 0 0 34px;
+  }
+
+  .research-quote-mark {
+    position: absolute;
+    left: -34px;
+    top: -10px;
+    font-size: 52px;
+    line-height: 1;
+    font-weight: var(--weight-heading);
+    color: var(--c-faint);
+  }
+
+  .research-quote-text {
+    margin: 0 0 10px;
+  }
+
+  .research-quote-text :global(p) {
+    margin: 0 0 10px;
+    font-size: 19px;
+    line-height: 1.55;
+    font-weight: var(--weight-body);
+    color: var(--c-body);
+  }
+
+  .research-quote-text :global(p:last-child) {
+    margin-bottom: 0;
+  }
+
+  .research-quote-attribution {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    color: var(--c-muted);
+  }
+</style>

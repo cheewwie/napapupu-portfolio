@@ -1,0 +1,31 @@
+---
+/**
+ * A cluster of ResearchQuotes, placed directly under the finding they
+ * support. Two to four is normal. Renders the "In their words" label once;
+ * see design/quote-pattern.md.
+ */
+---
+
+<div class="research-quotes">
+  <p class="research-quotes-label">In their words</p>
+  <div class="research-quotes-list">
+    <slot />
+  </div>
+</div>
+
+<style>
+  .research-quotes-label {
+    margin: 0 0 16px 34px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--c-faint);
+  }
+
+  .research-quotes-list {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+</style>

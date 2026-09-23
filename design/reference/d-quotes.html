@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>D · Two kinds of quote — research vs feedback</title>
+<!--
+  Design reference, exported from the "Portfolio 2026 — Three Directions"
+  canvas, artboard "D · Two kinds of quote — research vs feedback", on
+  23 Sept 2026 (artifact version 584). Static, no JavaScript.
+
+  Research quotes (the users' voice) vs feedback (colleagues and clients on
+  Alice's work). The spec is design/quote-pattern.md — read that, not this.
+  Research quote text on this board is placeholder; the feedback quote is real.
+
+  The 1440px frame is a canvas artboard, not a responsive spec.
+  REFERENCE ONLY: do not import, do not copy the inline styles wholesale.
+-->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Space+Mono:wght@400;700&amp;display=swap">
+<style>
+body { margin: 0; font-family: 'Space Grotesk', system-ui, sans-serif; background: #101A11; }
+a { color: #E8B848; }
+a:hover { color: #F09050; }
+.mono { font-family: 'Space Mono', monospace; }
+.tag { font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: #9FB09A; }
+.spec dt { font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: #7E8F78; margin: 0 0 4px; }
+.spec dd { margin: 0 0 14px; font-size: 15px; line-height: 1.5; color: #C9D3C4; font-weight: 300; }
+.body-p { margin: 0; font-size: 18px; line-height: 1.65; color: #9FB09A; font-weight: 300; }
+.ch-label { font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; padding-top: 5px; color: #7E8F78; }
+</style>
+</head>
+<body>
+
+<div style="width: 1440px; height: 1980px; box-sizing: border-box; background: #101A11; color: #EDEAE2; padding: 44px 64px 40px; display: flex; flex-direction: column; overflow: hidden; background-image: radial-gradient(circle, rgba(247,245,240,0.06) 1.1px, transparent 1.2px); background-size: 24px 24px; background-position: 12px 12px;">
+
+  <div style="display: flex; align-items: baseline; gap: 16px; padding-bottom: 16px; border-bottom: 1px solid #38492F; margin-bottom: 30px;">
+    <h1 style="margin: 0; font-size: 28px; font-weight: 500; letter-spacing: -0.025em; color: #F7F5F0;">Two kinds of quote<span style="display: inline-block; width: 0.13em; height: 0.13em; border-radius: 999px; background: #E8B848; margin-left: 0.06em; vertical-align: baseline;"></span></h1>
+    <span style="flex-grow: 1;"></span>
+    <span class="mono" style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #7E8F78;">Research is evidence · feedback is a verdict</span>
+  </div>
+
+  <!-- ===================== ANATOMY ===================== -->
+  <p class="mono" style="margin: 0 0 4px; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #E8B848; font-weight: 700;">Anatomy</p>
+  <p style="margin: 0 0 26px; font-size: 15px; line-height: 1.6; color: #9FB09A; font-weight: 300; max-width: 900px;">Four cues separate them, so none of them has to carry it alone: the mark, the attribution, the label, and where in the chapter they sit. Colour is the weakest of the four and does the least.</p>
+
+  <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; border-top: 1px solid #1D2A1B;">
+
+    <!-- Research specimen -->
+    <div style="padding: 26px 56px 30px 0; border-right: 1px solid #1D2A1B; display: flex; flex-direction: column; gap: 30px;">
+      <p class="tag" style="margin: 0;">A · From research — the users’ voice</p>
+      <figure style="margin: 0 0 0 34px; position: relative;">
+        <span aria-hidden="true" style="position: absolute; left: -34px; top: -10px; font-size: 52px; line-height: 1; font-weight: 500; color: #7E8F78;">“</span>
+        <blockquote style="margin: 0;">
+          <p style="margin: 0 0 12px; font-size: 19px; line-height: 1.55; color: #EDEAE2; font-weight: 300;">[A participant’s own words, verbatim, about finding Posti’s services scattered across different sites and logins — fifteen to twenty-five words.]</p>
+        </blockquote>
+        <figcaption class="mono" style="font-size: 11px; letter-spacing: 0.06em; color: #9FB09A;">[P04] · [Owner, web shop, 3 employees] · Interview, 2021</figcaption>
+      </figure>
+      <dl class="spec" style="margin: 0; padding-top: 18px; border-top: 1px solid #1D2A1B;">
+        <dt>Mark</dt><dd>A hanging quotation mark in faint green, outside the text column. No bar, no fill — it is raw material, not a highlight.</dd>
+        <dt>Attribution</dt><dd>Anonymised: participant code, the segment that makes the quote meaningful, and the method. Never a name.</dd>
+        <dt>Where it sits</dt><dd>Directly under the finding it supports, before the argument moves on. Two or three together is normal.</dd>
+        <dt>Size</dt><dd>19px, body colour — one step up from the prose so it reads as evidence, not decoration.</dd>
+      </dl>
+    </div>
+
+    <!-- Feedback specimen -->
+    <div style="padding: 26px 0 30px 56px; display: flex; flex-direction: column; gap: 30px; background: rgba(232,184,72,0.03);">
+      <p class="tag" style="margin: 0;">B · Feedback — colleagues on my work</p>
+      <figure style="margin: 0; padding: 2px 0 2px 24px; border-left: 4px solid #E3732D;">
+        <blockquote style="margin: 0;">
+          <p style="margin: 0 0 14px; font-size: 21px; line-height: 1.5; color: #F7F5F0; font-weight: 300;">More than we asked for!</p>
+        </blockquote>
+        <figcaption class="mono" style="font-size: 11px; letter-spacing: 0.08em; color: #9FB09A;">Head of Corporate Services · Posti Group</figcaption>
+      </figure>
+      <dl class="spec" style="margin: 0; padding-top: 18px; border-top: 1px solid #1D2A1B;">
+        <dt>Mark</dt><dd>The bar in the project’s key colour — what the live case study already does, so nothing changes here.</dd>
+        <dt>Attribution</dt><dd>Role and organisation, or a name when they have agreed to it. Whoever said it is the point.</dd>
+        <dt>Where it sits</dt><dd>After a result, closing the thought it judges. One at a time, never clustered.</dd>
+        <dt>Size</dt><dd>21px, headline colour — the loudest quote on the page, because it is the one a hiring reader is looking for.</dd>
+      </dl>
+    </div>
+  </div>
+
+  <p class="mono" style="margin: 0 0 40px; padding-top: 14px; border-top: 1px solid #1D2A1B; font-size: 11px; line-height: 1.7; letter-spacing: 0.04em; color: #7E8F78;">THE ATTRIBUTION DOES MOST OF THE WORK · “P04 · OWNER, WEB SHOP” CAN ONLY BE A RESEARCH PARTICIPANT AND “HEAD OF DESIGN · POSTI GROUP” CAN ONLY BE A COLLEAGUE, EVEN WITH ALL STYLING STRIPPED OUT — WHICH IS ALSO WHAT A SCREEN READER HEARS</p>
+
+  <!-- ===================== IN THE PAGE ===================== -->
+  <p class="mono" style="margin: 0 0 4px; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #E8B848; font-weight: 700;">In the page</p>
+  <p style="margin: 0 0 22px; font-size: 15px; line-height: 1.6; color: #9FB09A; font-weight: 300; max-width: 900px;">The same case study, two chapters. Research quotes live in Discover, as proof of a finding; feedback lives in Deliver and Results, as a verdict on what came out.</p>
+
+  <div style="border-top: 1px solid #1D2A1B; padding: 34px 0 10px; display: flex; flex-direction: column; gap: 52px;">
+
+    <!-- 02 DISCOVER -->
+    <article style="display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 44px; align-items: start;">
+      <div class="ch-label">02 — Discover</div>
+      <div style="max-width: 760px; display: flex; flex-direction: column; gap: 18px;">
+        <p style="margin: 0; font-size: 20px; font-weight: 500; letter-spacing: -0.01em; color: #C9D3C4;">Customers insights</p>
+        <p class="body-p">Services are all over the place. Each product had its own login, its own contract and its own help desk, and customers were left to work out which one they needed.</p>
+        <div style="display: flex; flex-direction: column; gap: 22px; margin: 6px 0 4px;">
+          <p class="tag" style="margin: 0 0 -6px 34px; color: #7E8F78;">In their words</p>
+          <figure style="margin: 0 0 0 34px; position: relative;">
+            <span aria-hidden="true" style="position: absolute; left: -34px; top: -10px; font-size: 52px; line-height: 1; font-weight: 500; color: #7E8F78;">“</span>
+            <blockquote style="margin: 0;"><p style="margin: 0 0 10px; font-size: 19px; line-height: 1.55; color: #EDEAE2; font-weight: 300;">[Verbatim participant quote supporting this finding — fifteen to twenty-five words.]</p></blockquote>
+            <figcaption class="mono" style="font-size: 11px; letter-spacing: 0.06em; color: #9FB09A;">[P04] · [Owner, web shop, 3 employees] · Interview, 2021</figcaption>
+          </figure>
+          <figure style="margin: 0 0 0 34px; position: relative;">
+            <span aria-hidden="true" style="position: absolute; left: -34px; top: -10px; font-size: 52px; line-height: 1; font-weight: 500; color: #7E8F78;">“</span>
+            <blockquote style="margin: 0;"><p style="margin: 0 0 10px; font-size: 19px; line-height: 1.55; color: #EDEAE2; font-weight: 300;">[A second, shorter one — eight words.]</p></blockquote>
+            <figcaption class="mono" style="font-size: 11px; letter-spacing: 0.06em; color: #9FB09A;">[P11] · [Logistics coordinator, wholesaler] · Interview, 2021</figcaption>
+          </figure>
+        </div>
+        <p class="body-p">Complex and unfair pricing came up just as often …</p>
+      </div>
+    </article>
+
+    <!-- 05 RESULTS -->
+    <article style="display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 44px; align-items: start;">
+      <div class="ch-label">05 — Results</div>
+      <div style="max-width: 760px; display: flex; flex-direction: column; gap: 18px;">
+        <p style="margin: 0; font-size: 20px; font-weight: 500; letter-spacing: -0.01em; color: #C9D3C4;">Investments</p>
+        <p class="body-p">In early 2022 we prioritised investment themes for the year. Matching the legacy application’s functionality was still the highest priority, but enablers of this vision were next to it. From Q2 2022, enabling initiatives started.</p>
+        <figure style="margin: 0; padding: 2px 0 2px 24px; border-left: 4px solid #E3732D;">
+          <blockquote style="margin: 0;"><p style="margin: 0 0 14px; font-size: 21px; line-height: 1.5; color: #F7F5F0; font-weight: 300;">More than we asked for!</p></blockquote>
+          <figcaption class="mono" style="font-size: 11px; letter-spacing: 0.08em; color: #9FB09A;">Head of Corporate Services · Posti Group</figcaption>
+        </figure>
+      </div>
+    </article>
+  </div>
+
+  <p class="mono" style="margin: 30px 0 0; padding-top: 14px; border-top: 1px solid #1D2A1B; font-size: 11px; line-height: 1.7; letter-spacing: 0.04em; color: #7E8F78;">THE “IN THEIR WORDS” LABEL APPEARS ONCE PER CLUSTER, NOT PER QUOTE · FEEDBACK GETS NO LABEL: THE BAR AND THE JOB TITLE ARE ENOUGH, AND A LABEL SAYING “PRAISE” WOULD UNDO IT · RESEARCH QUOTES ARE THE MORE SENSITIVE OF THE TWO — CHECK CONSENT BEFORE PUBLISHING, AND ON AN NDA PROJECT THEY GO BEHIND THE ACCESS LAYER WITH THE ARTEFACTS</p>
+
+</div>
+</body>
+</html>
