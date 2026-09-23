@@ -132,26 +132,32 @@ body.artefacts-hidden [data-artefact-fallback] {
 }
 
 .team-row {
-  display: flex;
-  gap: 12px;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: 13px 1fr;
+  column-gap: 12px;
+  align-items: start;
 }
 
+/* Centre each dot on the role label's line, whatever its size. */
 .team-dot {
-  flex-shrink: 0;
+  justify-self: center;
+  margin-top: 8px;
+  transform: translateY(-50%);
   border-radius: 999px;
 }
 
-.team-role {
+/* .team-list prefix outranks .chapter-body p. */
+.team-list .team-role {
   margin: 0 0 8px;
   font-family: var(--font-mono);
   font-size: var(--fs-label);
+  line-height: 16px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--c-body-dim);
 }
 
-.team-text {
+.team-list .team-text {
   margin: 0;
   font-size: var(--fs-small);
   line-height: 1.5;
