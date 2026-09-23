@@ -7,12 +7,12 @@ import HowIWork from '../components/HowIWork.astro';
 import Footer from '../components/Footer.astro';
 import Rail from '../components/Rail.astro';
 import MobileRailOpener from '../components/MobileRailOpener.astro';
-import { getProjects } from '../lib/content';
+import { getProjects, site } from '../lib/content';
 
 const projects = await getProjects();
 ---
 
-<Layout title="Alice Winter — Product design">
+<Layout title={site.meta.title}>
   <div class="page">
     <main class="content dotted">
       <Header />
@@ -23,7 +23,7 @@ const projects = await getProjects();
       <Footer />
     </main>
     <Rail projects={projects} />
-    {projects.length > 0 && <MobileRailOpener eyebrow="Filter" initialValue={`${projects.length} of ${projects.length} · Everything`} />}
+    {projects.length > 0 && <MobileRailOpener eyebrow={site.rail.mobileOpener} initialValue={`${projects.length} of ${projects.length} · ${site.rail.filters.access.options.all}`} />}
   </div>
 </Layout>
 

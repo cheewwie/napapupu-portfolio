@@ -1,20 +1,20 @@
 ---
+import { site } from '../lib/content';
+
+const { hero } = site;
 ---
 
 <section class="hero">
-  <p class="eyebrow">Product design · Helsinki, Finland</p>
+  <p class="eyebrow">{hero.eyebrow}</p>
   <h1 class="hero-title">
-    I design solutions for <span class="hero-annotated">real human beings</span><span
+    {hero.titleBefore} <span class="hero-annotated">{hero.titleCircled}</span>{hero.titleAfter}<span
       class="hero-dot"
       aria-hidden="true"></span>
   </h1>
-  <p class="hero-lede">
-    For the last eight years I designed digital products and services, for enterprise and
-    consumers, for all sorts of devices, for web and native, and always for people.
-  </p>
+  <p class="hero-lede">{hero.lede}</p>
   <div class="hero-availability">
     <span class="hero-availability-dot" aria-hidden="true"></span>
-    <span class="hero-availability-label">Available now</span>
+    <span class="hero-availability-label">{hero.availability}</span>
   </div>
 </section>
 

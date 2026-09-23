@@ -17,7 +17,7 @@ import DashboardCarousel from '../../components/case/DashboardCarousel.astro';
 import Gated from '../../components/case/Gated.astro';
 import Footer from '../../components/Footer.astro';
 import MobileRailOpener from '../../components/MobileRailOpener.astro';
-import { getWorkEntries } from '../../lib/content';
+import { getWorkEntries, site } from '../../lib/content';
 import '../../styles/case-prose.css';
 
 export async function getStaticPaths() {
@@ -63,7 +63,7 @@ const components = { Chapter, Artefact, Callout, Pullquote, ResearchQuote, Resea
       <Footer />
     </main>
     <CaseRail />
-    <MobileRailOpener eyebrow="On this page" initialValue="" />
+    <MobileRailOpener eyebrow={site.caseRail.chaptersHeading} initialValue="" />
   </div>
 </Layout>
 

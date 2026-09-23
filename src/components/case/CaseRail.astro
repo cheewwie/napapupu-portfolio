@@ -1,20 +1,30 @@
 ---
+import { site } from '../../lib/content';
+
+const { chaptersHeading, artefactToggle: toggle } = site.caseRail;
 ---
 
 <aside class="rail case-rail" id="rail" tabindex="-1">
-  <p class="rail-label">On this page</p>
+  <p class="rail-label">{chaptersHeading}</p>
   <nav id="chapter-nav" class="chapter-nav"></nav>
 
   <div class="artefact-toggle-row" id="artefact-toggle-row">
     <button type="button" class="artefact-toggle" id="artefact-toggle" role="switch" aria-checked="true">
       <span class="switch-label">
-        <span class="switch-label-title">Show the working</span>
-        <span class="switch-label-sub">Artefacts in the text</span>
+        <span class="switch-label-title">{toggle.title}</span>
+        <span class="switch-label-sub">{toggle.subtitle}</span>
       </span>
       <span class="switch-track" aria-hidden="true"><span class="switch-thumb"></span></span>
     </button>
   </div>
-  <p class="marginalia" id="artefact-marginalia">Artefacts break the text where the story needs them</p>
+  <p
+    class="marginalia"
+    id="artefact-marginalia"
+    data-note-shown-one={toggle.noteShownOne}
+    data-note-shown-many={toggle.noteShownMany}
+    data-note-hidden-one={toggle.noteHiddenOne}
+    data-note-hidden-many={toggle.noteHiddenMany}
+  ></p>
 </aside>
 
 <style>

@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { site } from '../lib/content';
 
 export interface Props {
   title: string;
@@ -8,7 +9,7 @@ export interface Props {
 
 const {
   title,
-  description = 'Alice Winter — product design for real human beings. Product design portfolio, Helsinki, Finland.',
+  description = site.meta.description,
 } = Astro.props;
 ---
 

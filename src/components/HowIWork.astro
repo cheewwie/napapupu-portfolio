@@ -1,26 +1,16 @@
 ---
-const tiles = [
-  {
-    accent: 'leaf',
-    title: 'Keep it simple, stupid',
-    body: "The hard part is removing. It's not letting in anything on the screen, that doesn't serve a purpose. It's not letting the interface make people feel dumb,",
-  },
-  {
-    accent: 'orange',
-    title: 'Make it last',
-    body: "A system that survives the test of time, that the next team can work with, and the one in 10 years. And a design that doesn't look old tomorrow.",
-  },
-  {
-    accent: 'pink',
-    title: 'Team work makes the dream work',
-    body: 'My best work happens in a room with engineers, experts and stakeholders, not alone in a Figma (or Claude) file.',
-  },
-];
+import { site } from '../lib/content';
+
+// Accents are design, not copy: tile N takes accent N. A tile beyond the
+// third gets no accent stripe rather than a decorative one.
+const accents = ['leaf', 'orange', 'pink'];
+
+const tiles = site.howIWork.tiles.map((tile, i) => ({ ...tile, accent: accents[i] ?? 'none' }));
 ---
 
 <section class="work-section" aria-labelledby="work-heading">
   <div class="index-head">
-    <h2 id="work-heading" class="index-label">How I work</h2>
+    <h2 id="work-heading" class="index-label">{site.howIWork.heading}</h2>
   </div>
   <div class="work-grid">
     {

@@ -5,6 +5,8 @@
  * the opener bar + scrim; the drawer itself is the existing #rail element,
  * repositioned by CSS at the same breakpoint. See src/scripts/mobileDrawer.ts.
  */
+import { site } from '../lib/content';
+
 export interface Props {
   eyebrow: string;
   initialValue: string;
@@ -29,7 +31,7 @@ const { eyebrow, initialValue } = Astro.props;
     </svg>
   </span>
   <span class="rail-opener-action rail-opener-action--open" aria-hidden="true">
-    Close
+    {site.rail.mobileClose}
     <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <path d="M6 9l6 6 6-6"></path>
     </svg>
