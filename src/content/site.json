@@ -1,0 +1,87 @@
+{
+  "meta": {
+    "title": "Alice Winter — Product design",
+    "description": "Alice Winter — product design for real human beings. Product design portfolio, Helsinki, Finland."
+  },
+
+  "name": "Alice Winter",
+
+  "contact": {
+    "cta": "Get in touch",
+    "email": "napapupu@proton.me",
+    "linkedin": "https://www.linkedin.com/in/alicebaggio/",
+    "timezone": "Helsinki · UTC+3"
+  },
+
+  "hero": {
+    "eyebrow": "Product design · Helsinki, Finland",
+    "titleBefore": "I design solutions for",
+    "titleCircled": "real human beings",
+    "titleAfter": "",
+    "lede": "For the last eight years I designed digital products and services, for pros and consumers, for all sorts of devices, for web and native, and always for people.",
+    "availability": "Available now"
+  },
+
+  "projects": {
+    "heading": "Projects",
+    "empty": "No case studies published yet — check back soon.",
+    "noMatches": "Nothing matches those two filters. Clear one to see more.",
+    "columns": {
+      "description": "Description",
+      "user": "User",
+      "device": "Device",
+      "year": "Year",
+      "access": "Access"
+    },
+    "alsoHeading": "Also — writing & speaking"
+  },
+
+  "howIWork": {
+    "heading": "How I work",
+    "tiles": [
+      {
+        "title": "Keep it simple, stupid",
+        "body": "The hard part is removing. It's not letting in anything on the screen, that doesn't serve a purpose. It's not letting the interface make people feel dumb,"
+      },
+      {
+        "title": "Make it last",
+        "body": "A system that survives the test of time, that the next team can work with, and the one in 10 years. And a design that doesn't look old tomorrow."
+      },
+      {
+        "title": "Team work makes the dream work",
+        "body": "My best work happens in a room with engineers, experts and stakeholders, not alone in a Figma (or Claude) file."
+      }
+    ]
+  },
+
+  "caseRail": {
+    "chaptersHeading": "On this page",
+    "artefactToggle": {
+      "title": "Show artefacts",
+      "subtitle": "Artefacts will be shown where the story needs them",
+      "noteShownOne": "{count} artefact showing",
+      "noteShownMany": "{count} artefacts showing",
+      "noteHiddenOne": "{count} artefact behind the toggle",
+      "noteHiddenMany": "{count} artefacts behind the toggle"
+    }
+  },
+
+  "rail": {
+    "mobileOpener": "Filter",
+    "mobileClose": "Close",
+    "filters": {
+      "access": {
+        "label": "Access",
+        "options": { "all": "Everything", "open": "Open", "on-request": "On request" }
+      },
+      "user": {
+        "label": "User",
+        "options": { "all": "All users", "pro": "Pro", "consumer": "Consumer" }
+      },
+      "device": {
+        "label": "Device",
+        "options": { "all": "All devices", "desktop": "Desktop", "mobile": "Mobile", "embedded": "Embedded" }
+      }
+    }
+  }
+}

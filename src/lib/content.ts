@@ -1,5 +1,6 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
 import alsoData from '../../design/content/also.json';
+import siteData from '../content/site.json';
 
 export interface Project {
   slug: string;
@@ -36,6 +37,9 @@ export async function getProjects(): Promise<Project[]> {
 }
 
 export const also: AlsoEntry[] = alsoData;
+
+/** Hardcoded site copy (homepage, rail, header, footer) — edit src/content/site.json. */
+export const site = siteData;
 
 /** Lowercase, hyphenated slug for filter values and routes. */
 export function slugify(value: string): string {

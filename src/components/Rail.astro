@@ -1,5 +1,5 @@
 ---
-import type { Project } from '../lib/content';
+import { site, type Project } from '../lib/content';
 
 export interface Props {
   projects: Project[];
@@ -10,24 +10,25 @@ const { projects } = Astro.props;
 // Alice has no "On request" projects ready yet — hide the option until she does.
 const SHOW_ON_REQUEST = false;
 
+// Filter values must match the project data, so they live here; the labels
+// shown for them live in src/content/site.json.
+const { filters } = site.rail;
+
 const accessOptions = [
-  { value: 'all', label: 'Everything' },
-  { value: 'open', label: 'Open' },
-  ...(SHOW_ON_REQUEST ? [{ value: 'on-request', label: 'On request' }] : []),
+  { value: 'all', label: filters.access.options.all },
+  { value: 'open', label: filters.access.options.open },
+  ...(SHOW_ON_REQUEST ? [{ value: 'on-request', label: filters.access.options['on-request'] }] : []),
 ];
 
-const userOptions = [
-  { value: 'all', label: 'All users' },
-  { value: 'pro', label: 'Pro' },
-  { value: 'consumer', label: 'Consumer' },
-];
+const userOptions = (['all', 'pro', 'consumer'] as const).map((value) => ({
+  value,
+  label: filters.user.options[value],
+}));
 
-const deviceOptions = [
-  { value: 'all', label: 'All devices' },
-  { value: 'desktop', label: 'Desktop' },
-  { value: 'mobile', label: 'Mobile' },
-  { value: 'embedded', label: 'Embedded' },
-];
+const deviceOptions = (['all', 'desktop', 'mobile', 'embedded'] as const).map((value) => ({
+  value,
+  label: filters.device.options[value],
+}));
 
 // Default state: every group at "all", so every option's initial count is
 // simply how many projects it would include on its own — the live
@@ -42,9 +43,9 @@ function initialCount(kind: 'access' | 'user' | 'device', value: string): number
 }
 
 const groups = [
-  { key: 'access' as const, label: 'Access', options: accessOptions },
-  { key: 'user' as const, label: 'User', options: userOptions },
-  { key: 'device' as const, label: 'Device', options: deviceOptions },
+  { key: 'access' as const, label: filters.access.label, options: accessOptions },
+  { key: 'user' as const, label: filters.user.label, options: userOptions },
+  { key: 'device' as const, label: filters.device.label, options: deviceOptions },
 ];
 ---
 

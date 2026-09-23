@@ -1,5 +1,5 @@
 ---
-import { also, slugify, type Project } from '../lib/content';
+import { also, site, slugify, type Project } from '../lib/content';
 
 export interface Props {
   projects: Project[];
@@ -9,13 +9,15 @@ export interface Props {
 
 const { projects, showAlso = false } = Astro.props;
 
+const copy = site.projects;
+
 const accessSlug = (value: string) => slugify(value);
 const fieldSlug = (value: string) => slugify(value);
 ---
 
 <section class="index-section" aria-labelledby="projects-heading">
   <div class="index-head">
-    <h2 id="projects-heading" class="index-label">Projects</h2>
+    <h2 id="projects-heading" class="index-label">{copy.heading}</h2>
     <span class="spacer"></span>
     {
       projects.length > 0 && (
@@ -28,16 +30,16 @@ const fieldSlug = (value: string) => slugify(value);
 
   {
     projects.length === 0 ? (
-      <p class="index-empty">No case studies published yet — check back soon.</p>
+      <p class="index-empty">{copy.empty}</p>
     ) : (
       <Fragment>
         <div class="index-columns" aria-hidden="true">
           <span></span>
-          <span>Description</span>
-          <span>User</span>
-          <span>Device</span>
-          <span>Year</span>
-          <span>Access</span>
+          <span>{copy.columns.description}</span>
+          <span>{copy.columns.user}</span>
+          <span>{copy.columns.device}</span>
+          <span>{copy.columns.year}</span>
+          <span>{copy.columns.access}</span>
         </div>
 
         <div id="projects-list">
@@ -59,19 +61,19 @@ const fieldSlug = (value: string) => slugify(value);
               </span>
 
               <span class="idx-field idx-field--user">
-                <span class="idx-field-label">User</span>
+                <span class="idx-field-label">{copy.columns.user}</span>
                 <span class="idx-field-value">{project.user}</span>
               </span>
               <span class="idx-field idx-field--device">
-                <span class="idx-field-label">Device</span>
+                <span class="idx-field-label">{copy.columns.device}</span>
                 <span class="idx-field-value idx-field-value--pre">{project.devices.join('\n')}</span>
               </span>
               <span class="idx-field idx-field--year">
-                <span class="idx-field-label">Year</span>
+                <span class="idx-field-label">{copy.columns.year}</span>
                 <span class="idx-field-value idx-field-value--mono">{project.year}</span>
               </span>
               <span class="idx-field idx-field--access">
-                <span class="idx-field-label">Access</span>
+                <span class="idx-field-label">{copy.columns.access}</span>
                 <span class:list={['idx-access-pill', { 'idx-access-pill--gated': project.access === 'On request' }]}>
                   {project.access}
                 </span>
@@ -81,7 +83,7 @@ const fieldSlug = (value: string) => slugify(value);
         </div>
 
         <p id="projects-empty" class="index-empty" hidden>
-          Nothing matches those two filters. Clear one to see more.
+          {copy.noMatches}
         </p>
       </Fragment>
     )
@@ -93,7 +95,7 @@ const fieldSlug = (value: string) => slugify(value);
     <section class="index-section index-section--also" id="also-section" aria-labelledby="also-heading">
       <div class="index-head index-head--quiet">
         <h2 id="also-heading" class="index-label index-label--quiet">
-          Also — writing &amp; speaking
+          {copy.alsoHeading}
         </h2>
       </div>
 
