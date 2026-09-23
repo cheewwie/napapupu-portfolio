@@ -42,7 +42,7 @@ const attribution = [code, source, methodYear].filter(Boolean).join(' · ');
   .research-quote-label {
     margin: 0 0 16px 34px;
     font-family: var(--font-mono);
-    font-size: 10px;
+    font-size: var(--fs-label);
     letter-spacing: 0.16em;
     text-transform: uppercase;
     color: var(--c-faint);
@@ -68,16 +68,23 @@ const attribution = [code, source, methodYear].filter(Boolean).join(' · ');
     color: var(--c-faint);
   }
 
+  /* Type sits on the blockquote, not the <p>, so one-line content (which
+     MDX doesn't wrap in a paragraph) gets the same size. */
   .research-quote-text {
     margin: 0 0 10px;
-  }
-
-  .research-quote-text :global(p) {
-    margin: 0 0 10px;
-    font-size: 19px;
+    font-size: var(--fs-row);
     line-height: 1.55;
     font-weight: var(--weight-body);
     color: var(--c-body);
+  }
+
+  /* Inherit from the wrapper: `.chapter-body p` would otherwise give
+     multi-paragraph quotes the muted prose style. */
+  .research-quote-text :global(p) {
+    margin: 0 0 10px;
+    font: inherit;
+    letter-spacing: inherit;
+    color: inherit;
   }
 
   .research-quote-text :global(p:last-child) {
@@ -86,7 +93,7 @@ const attribution = [code, source, methodYear].filter(Boolean).join(' · ');
 
   .research-quote-attribution {
     font-family: var(--font-mono);
-    font-size: 11px;
+    font-size: var(--fs-caption);
     letter-spacing: 0.06em;
     color: var(--c-muted);
   }

@@ -92,7 +92,7 @@ const { eyebrow, initialValue } = Astro.props;
     .rail-opener-eyebrow {
       display: block;
       font-family: var(--font-mono);
-      font-size: 9px;
+      font-size: var(--fs-label);
       letter-spacing: var(--track-mono-label);
       text-transform: uppercase;
       color: var(--c-faint);
@@ -103,7 +103,7 @@ const { eyebrow, initialValue } = Astro.props;
       display: flex;
       align-items: center;
       gap: 9px;
-      font-size: 15px;
+      font-size: var(--fs-small);
       font-weight: 500;
       color: var(--c-headline);
       overflow: hidden;
@@ -128,7 +128,7 @@ const { eyebrow, initialValue } = Astro.props;
       align-items: center;
       gap: 7px;
       flex-shrink: 0;
-      font-size: 15px;
+      font-size: var(--fs-small);
       font-weight: 500;
       color: var(--c-headline);
     }

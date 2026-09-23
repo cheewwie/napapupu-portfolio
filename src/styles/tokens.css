@@ -82,6 +82,24 @@
   --track-mono-label: 0.14em;  /* mono labels are tracked OUT, uppercase */
   --track-mono-eyebrow: 0.18em;
 
+  /* Sizes. Fluid ones hit the mobile value at 390px and the desktop value
+   * at 1440px. Everything 15px and below is fixed on every viewport.
+   * Reasoning: type-scale.md. */
+  --fs-display: clamp(38px, 28.3px + 2.48vw, 64px);  /* home hero        */
+  --fs-title:   clamp(34px, 23.6px + 2.67vw, 62px);  /* case-study title */
+  --fs-section: clamp(24px, 21.8px + 0.57vw, 30px);
+  --fs-row:     clamp(19px, 18.3px + 0.19vw, 21px);  /* index row titles */
+  --fs-body:    clamp(17px, 16.3px + 0.19vw, 19px);  /* weight 300: never below 17 */
+  --fs-small: 15px;
+  --fs-meta: 12px;      /* mono */
+  --fs-label: 11px;     /* mono caps */
+  --fs-caption: 11px;   /* mono */
+  --fs-chip: 10px;      /* mono caps; the floor, nothing smaller */
+
+  --lh-display: 1.04;
+  --lh-title: 1.02;
+  --lh-body: 1.62;
+
   /* ------------------------------------------------------------- the grid */
   /* Dotted notebook ground: content column ONLY, never the rail. */
   --grid-size: 24px;
@@ -99,6 +117,20 @@
    * light: orange 2.2:1, pink 3.0:1. */
   --c-orange-on-light: #8D400C;
   --c-pink-on-light: #A92335;
+}
+
+/* Mobile: slightly looser display tracking and line height; caps labels
+ * give up tracking instead of size. */
+@media (max-width: 640px) {
+  :root {
+    --track-display: -0.03em;
+    --track-title: -0.02em;
+    --track-row: -0.015em;
+    --track-mono-eyebrow: 0.14em;
+    --lh-display: 1.06;
+    --lh-title: 1.08;
+    --lh-body: 1.6;
+  }
 }
 
 /* The dotted grid, applied to the content column only. */

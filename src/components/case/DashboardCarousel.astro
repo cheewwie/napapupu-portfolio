@@ -89,7 +89,7 @@ const { tabs, caption } = Astro.props;
     padding: 13px 16px;
     line-height: 18px;
     font-family: inherit;
-    font-size: 13px;
+    font-size: var(--fs-meta);
     border-radius: var(--radius-sm);
     cursor: pointer;
     background: transparent;
@@ -107,7 +107,7 @@ const { tabs, caption } = Astro.props;
 
   .carousel-counter {
     font-family: var(--font-mono);
-    font-size: 11px;
+    font-size: var(--fs-caption);
     letter-spacing: 0.1em;
     color: var(--c-muted);
     white-space: nowrap;
@@ -151,7 +151,7 @@ const { tabs, caption } = Astro.props;
   .carousel-caption {
     margin-top: 12px;
     font-family: var(--font-mono);
-    font-size: 10px;
+    font-size: var(--fs-caption);
     line-height: 1.6;
     letter-spacing: 0.04em;
     color: var(--c-faint);
