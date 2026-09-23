@@ -27,7 +27,7 @@
   .eyebrow {
     margin: 0 0 24px;
     font-family: var(--font-mono);
-    font-size: 11px;
+    font-size: var(--fs-label);
     letter-spacing: var(--track-mono-eyebrow);
     text-transform: uppercase;
     color: var(--c-amber);
@@ -36,8 +36,8 @@
   .hero-title {
     margin: 0;
     max-width: 940px;
-    font-size: 64px;
-    line-height: 1.04;
+    font-size: var(--fs-display);
+    line-height: var(--lh-display);
     font-weight: var(--weight-heading);
     letter-spacing: var(--track-display);
     color: var(--c-headline);
@@ -75,8 +75,8 @@
   .hero-lede {
     margin: 26px 0 0;
     max-width: 720px;
-    font-size: 19px;
-    line-height: 1.62;
+    font-size: var(--fs-body);
+    line-height: var(--lh-body);
     color: var(--c-muted);
     font-weight: var(--weight-body);
   }
@@ -98,7 +98,7 @@
 
   .hero-availability-label {
     font-family: var(--font-mono);
-    font-size: 11px;
+    font-size: var(--fs-label);
     letter-spacing: 0.06em;
     text-transform: uppercase;
     color: var(--c-muted);
@@ -108,10 +108,6 @@
     .hero {
       padding-left: 24px;
       padding-right: 24px;
-    }
-
-    .hero-title {
-      font-size: 44px;
     }
   }
 </style>

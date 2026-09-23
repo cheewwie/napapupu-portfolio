@@ -139,7 +139,7 @@ const fieldSlug = (value: string) => slugify(value);
   .index-label {
     margin: 0;
     font-family: var(--font-mono);
-    font-size: 11px;
+    font-size: var(--fs-label);
     letter-spacing: var(--track-mono-label);
     text-transform: uppercase;
     color: var(--c-body);
@@ -152,7 +152,7 @@ const fieldSlug = (value: string) => slugify(value);
 
   .index-count {
     font-family: var(--font-mono);
-    font-size: 11px;
+    font-size: var(--fs-caption);
     letter-spacing: 0.08em;
     color: var(--c-faint);
   }
@@ -165,7 +165,7 @@ const fieldSlug = (value: string) => slugify(value);
     padding: 12px 0 10px;
     border-bottom: 1px solid var(--c-hairline);
     font-family: var(--font-mono);
-    font-size: 10px;
+    font-size: var(--fs-label);
     letter-spacing: 0.16em;
     text-transform: uppercase;
     color: var(--c-faint);
@@ -225,7 +225,7 @@ const fieldSlug = (value: string) => slugify(value);
 
   .idx-title {
     display: block;
-    font-size: 21px;
+    font-size: var(--fs-row);
     font-weight: var(--weight-heading);
     letter-spacing: var(--track-row);
     color: var(--c-headline);
@@ -234,14 +234,14 @@ const fieldSlug = (value: string) => slugify(value);
 
   .idx-blurb {
     display: block;
-    font-size: 15px;
+    font-size: var(--fs-small);
     line-height: 1.45;
     color: var(--c-muted);
     font-weight: var(--weight-body);
   }
 
   .idx-field-value {
-    font-size: 14px;
+    font-size: var(--fs-small);
     line-height: 1.45;
     color: var(--c-muted);
   }
@@ -252,12 +252,12 @@ const fieldSlug = (value: string) => slugify(value);
 
   .idx-field-value--mono {
     font-family: var(--font-mono);
-    font-size: 12px;
+    font-size: var(--fs-meta);
   }
 
   .idx-access-pill {
     font-family: var(--font-mono);
-    font-size: 10px;
+    font-size: var(--fs-chip);
     letter-spacing: 0.1em;
     text-transform: uppercase;
     font-weight: 700;
@@ -276,7 +276,7 @@ const fieldSlug = (value: string) => slugify(value);
   .index-empty {
     margin: 0;
     padding: 40px 0;
-    font-size: 15px;
+    font-size: var(--fs-small);
     color: var(--c-muted);
   }
 
@@ -310,24 +310,24 @@ const fieldSlug = (value: string) => slugify(value);
   }
 
   .idx-also-title {
-    font-size: 16px;
+    font-size: var(--fs-body);
     font-weight: 400;
     padding-right: 14px;
   }
 
   .idx-also-kind,
   .idx-also-year {
-    font-size: 13px;
+    font-size: var(--fs-meta);
     color: var(--c-faint);
   }
 
   .idx-also-year {
     font-family: var(--font-mono);
-    font-size: 11px;
+    font-size: var(--fs-caption);
   }
 
   .idx-also-dash {
-    font-size: 13px;
+    font-size: var(--fs-meta);
     color: var(--c-disabled);
   }
 
@@ -362,22 +362,26 @@ const fieldSlug = (value: string) => slugify(value);
       flex-shrink: 0;
     }
 
+    /* Same right inset as the specs below. */
     .idx-copy {
-      padding-right: 0;
+      padding-right: 20px;
     }
 
+    /* Inset the specs to line up with the title (dot + gap), and match
+       that inset on the right so they don't run to the row's edge. */
     .idx-field {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 12px;
+      padding: 0 20px;
     }
 
     .idx-field-label {
       display: block;
       flex-shrink: 0;
       font-family: var(--font-mono);
-      font-size: 10px;
+      font-size: var(--fs-label);
       letter-spacing: 0.16em;
       text-transform: uppercase;
       color: var(--c-faint);

@@ -15,6 +15,7 @@ Canvas: https://claude.ai/artifact/K5EYevqnGK3ip3WTTiQgUj
 | Path | What it is |
 |---|---|
 | `tokens.css` | Colour and type, with each accent's role written in. **Read this first.** |
+| `type-scale.md` | Desktop and mobile type sizes, and why. Overrides the sizes drawn on `reference/m-*.html`. Added 23 Sept. |
 | `brief.md` | The agreed direction: concept, colour, type, the mark, layout, confidentiality. |
 | `annotation-pattern.md` | How case-study artefacts are annotated, if you generate more. |
 | `quote-pattern.md` | Research quotes vs colleague feedback: the spec, the two components, and existing content that doesn't follow it yet. Added 23 Sept. |

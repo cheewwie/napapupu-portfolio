@@ -22,14 +22,14 @@ body.artefacts-hidden [data-artefact-fallback] {
 }
 
 .chapter-body p {
-  font-size: 18px;
-  line-height: 1.65;
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
   color: var(--c-muted);
   font-weight: var(--weight-body);
 }
 
 .chapter-body h3 {
-  font-size: 20px;
+  font-size: var(--fs-row);
   font-weight: var(--weight-heading);
   letter-spacing: -0.01em;
   color: var(--c-body-dim);
@@ -57,7 +57,7 @@ body.artefacts-hidden [data-artefact-fallback] {
 .chapter-body li {
   position: relative;
   padding-left: 16px;
-  font-size: 18px;
+  font-size: var(--fs-body);
   line-height: 1.5;
   color: var(--c-muted);
   font-weight: var(--weight-body);
@@ -104,18 +104,21 @@ body.artefacts-hidden [data-artefact-fallback] {
   padding: 24px;
 }
 
-.vision-card-headline {
+/* Scoped under .vision-card so these beat `.chapter-body p`, which would
+   otherwise turn both lines into body copy. */
+.vision-card .vision-card-headline {
   margin: 0 0 7px;
-  font-size: 34px;
-  font-weight: var(--weight-strong);
-  letter-spacing: -0.03em;
+  font-size: var(--fs-section);
+  line-height: 1.15;
+  font-weight: var(--weight-heading);
+  letter-spacing: var(--track-title);
   color: var(--c-headline);
 }
 
-.vision-card-sub {
+.vision-card .vision-card-sub {
   margin: 0;
-  font-size: 14px;
-  line-height: 1.5;
+  font-size: var(--fs-small);
+  line-height: 1.45;
   color: var(--c-muted);
 }
 
@@ -147,7 +150,7 @@ body.artefacts-hidden [data-artefact-fallback] {
 .team-list .team-role {
   margin: 0 0 8px;
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: var(--fs-label);
   line-height: 16px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -156,7 +159,7 @@ body.artefacts-hidden [data-artefact-fallback] {
 
 .team-list .team-text {
   margin: 0;
-  font-size: 15px;
+  font-size: var(--fs-small);
   line-height: 1.5;
   color: var(--c-muted);
   font-weight: var(--weight-body);
@@ -165,10 +168,6 @@ body.artefacts-hidden [data-artefact-fallback] {
 @media (max-width: 900px) {
   .vision-split {
     grid-template-columns: 1fr;
-  }
-
-  .vision-card-headline {
-    font-size: 26px;
   }
 
   .chapter-body ul.two-col {

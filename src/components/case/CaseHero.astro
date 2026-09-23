@@ -45,7 +45,7 @@ const { eyebrowCategory, year, readTime, title, dek, dot } = Astro.props;
 
   .case-eyebrow-text {
     font-family: var(--font-mono);
-    font-size: 11px;
+    font-size: var(--fs-label);
     letter-spacing: var(--track-mono-label);
     text-transform: uppercase;
     color: var(--c-muted);
@@ -54,8 +54,8 @@ const { eyebrowCategory, year, readTime, title, dek, dot } = Astro.props;
   .case-title {
     margin: 0 0 20px;
     max-width: 880px;
-    font-size: 62px;
-    line-height: 1.02;
+    font-size: var(--fs-title);
+    line-height: var(--lh-title);
     font-weight: var(--weight-heading);
     letter-spacing: var(--track-display);
     color: var(--c-headline);
@@ -74,8 +74,8 @@ const { eyebrowCategory, year, readTime, title, dek, dot } = Astro.props;
   .case-dek {
     margin: 0;
     max-width: 780px;
-    font-size: 20px;
-    line-height: 1.6;
+    font-size: var(--fs-body);
+    line-height: var(--lh-body);
     color: var(--c-muted);
     font-weight: var(--weight-body);
   }
@@ -83,10 +83,6 @@ const { eyebrowCategory, year, readTime, title, dek, dot } = Astro.props;
   @media (max-width: 900px) {
     .case-hero {
       padding: 32px 24px 24px;
-    }
-
-    .case-title {
-      font-size: 40px;
     }
   }
 </style>
