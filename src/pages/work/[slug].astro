@@ -37,7 +37,6 @@ interface Props {
 const { entry, next } = Astro.props;
 const { data } = entry;
 const { Content } = await render(entry);
-const nextRef = String(next.data.order).padStart(2, '0');
 
 // Available in every case-study MDX file without an import.
 const components = { Chapter, Artefact, Callout, Pullquote, ResearchQuote, ResearchQuotes, DashboardCarousel, Gated };
@@ -60,7 +59,7 @@ const components = { Chapter, Artefact, Callout, Pullquote, ResearchQuote, Resea
       <section class="chapters" style={{ '--case-dot': data.dot }}>
         <Content components={components} />
       </section>
-      <NextCase title={next.data.title} slug={next.id} ref={nextRef} />
+      <NextCase title={next.data.title} slug={next.id} />
       <Footer />
     </main>
     <CaseRail />
