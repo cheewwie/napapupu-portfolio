@@ -1,4 +1,6 @@
 ---
+// No About page yet — bring this back once Alice builds it.
+const SHOW_ABOUT = false;
 ---
 
 <header class="site-header">
@@ -22,7 +24,8 @@
     <span class="brand-name">Alice Winter</span>
   </a>
   <span class="spacer"></span>
-  <a href="#about" class="nav-link">About</a>
+  {SHOW_ABOUT && <a href="#about" class="nav-link">About</a>}
+  <a href="mailto:napapupu@proton.me" class="header-cta">Get in touch</a>
 </header>
 
 <style>
@@ -72,6 +75,26 @@
   .nav-link:hover,
   .nav-link:focus-visible {
     color: var(--c-orange);
+  }
+
+  .header-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: var(--tap-min);
+    box-sizing: border-box;
+    padding: 0 20px;
+    border-radius: 999px;
+    background: var(--c-amber);
+    color: var(--c-ground);
+    font-size: 15px;
+    font-weight: var(--weight-strong);
+    text-decoration: none;
+  }
+
+  .header-cta:hover,
+  .header-cta:focus-visible {
+    background: var(--c-orange);
   }
 
   @media (max-width: 900px) {

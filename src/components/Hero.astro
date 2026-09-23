@@ -12,6 +12,10 @@
     For the last eight years I designed digital products and services, for enterprise and
     consumers, for all sorts of devices, for web and native, and always for people.
   </p>
+  <div class="hero-availability">
+    <span class="hero-availability-dot" aria-hidden="true"></span>
+    <span class="hero-availability-label">Free from [Month]</span>
+  </div>
 </section>
 
 <style>
@@ -75,6 +79,29 @@
     line-height: 1.62;
     color: var(--c-muted);
     font-weight: var(--weight-body);
+  }
+
+  .hero-availability {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    margin-top: 22px;
+  }
+
+  .hero-availability-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 999px;
+    background: var(--c-leaf);
+    display: inline-block;
+  }
+
+  .hero-availability-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--c-muted);
   }
 
   @media (max-width: 900px) {

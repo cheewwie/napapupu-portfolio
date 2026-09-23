@@ -7,6 +7,7 @@ import SpecStrip from '../../components/case/SpecStrip.astro';
 import HeroFigure from '../../components/case/HeroFigure.astro';
 import CaseRail from '../../components/case/CaseRail.astro';
 import NextCase from '../../components/case/NextCase.astro';
+import Footer from '../../components/Footer.astro';
 import MobileRailOpener from '../../components/MobileRailOpener.astro';
 import { getWorkEntries } from '../../lib/content';
 import '../../styles/case-prose.css';
@@ -49,6 +50,7 @@ const nextRef = String(next.data.order).padStart(2, '0');
         <Content />
       </section>
       <NextCase title={next.data.title} slug={next.id} ref={nextRef} />
+      <Footer />
     </main>
     <CaseRail />
     <MobileRailOpener eyebrow="On this page" initialValue="" />

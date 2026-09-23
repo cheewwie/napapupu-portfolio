@@ -1,8 +1,16 @@
 ---
+// No CV ready yet — bring this back once Alice has one to link.
+const SHOW_CV = false;
 ---
 
 <footer class="site-footer" id="contact">
-  <a href="#contact" class="footer-email">[your@email]</a>
+  <a href="mailto:napapupu@proton.me" class="footer-cta">Get in touch</a>
+  <div class="footer-links">
+    <a href="https://www.linkedin.com/in/alicebaggio/" class="footer-link" target="_blank" rel="noopener noreferrer">LI</a>
+    {SHOW_CV && (
+      <a href="#cv" class="footer-link">CV</a>
+    )}
+  </div>
   <span class="spacer"></span>
   <span class="footer-tz">Helsinki · UTC+3</span>
 </footer>
@@ -18,19 +26,45 @@
     gap: 24px;
   }
 
-  .footer-email {
+  .footer-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: var(--tap-min);
+    box-sizing: border-box;
+    padding: 0 22px;
+    border-radius: 999px;
+    background: var(--c-amber);
+    color: var(--c-ground);
+    font-size: 15px;
+    font-weight: var(--weight-strong);
+    text-decoration: none;
+  }
+
+  .footer-cta:hover,
+  .footer-cta:focus-visible {
+    background: var(--c-orange);
+  }
+
+  .footer-links {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+  }
+
+  .footer-link {
     display: inline-flex;
     align-items: center;
     min-height: var(--tap-min);
-    font-size: 30px;
-    font-weight: var(--weight-heading);
-    letter-spacing: -0.025em;
+    color: var(--c-faint);
     text-decoration: none;
-    color: var(--c-amber);
   }
 
-  .footer-email:hover,
-  .footer-email:focus-visible {
+  .footer-link:hover,
+  .footer-link:focus-visible {
     color: var(--c-orange);
   }
 
@@ -46,6 +80,9 @@
     .site-footer {
       padding-left: 24px;
       padding-right: 24px;
+      /* The mobile drawer's opener bar (76px, MobileRailOpener.astro) is
+         fixed over the bottom of the page — pad it out of the footer's way. */
+      padding-bottom: calc(30px + 76px);
     }
   }
 </style>
