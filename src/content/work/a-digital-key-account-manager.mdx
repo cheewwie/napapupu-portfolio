@@ -21,12 +21,6 @@ heroSrc: /case-assets/OPP-hero.jpg
 heroAlt: "Two overlapping OmaPosti Pro dashboard windows, one behind the other, each showing a different signed-in user. The front window shows customer satisfaction over the last seven days trending steady, parcels currently ordered/sent/in transport/delivered/delayed as a bar chart, a notifications panel with none pending, a promoted tip about giving customers peace of mind over home delivery, and a news item about home deliveries getting an upgrade. The side navigation carries Tracking, Reports and Integrations under Tools, and Business account and My account under Account settings."
 ---
 
-import Chapter from '../../components/case/Chapter.astro';
-import Artefact from '../../components/case/Artefact.astro';
-import Callout from '../../components/case/Callout.astro';
-import Pullquote from '../../components/case/Pullquote.astro';
-import DashboardCarousel from '../../components/case/DashboardCarousel.astro';
-
 <Chapter n="01" title="Context">
 
 Posti had launched OmaPosti Pro, a modern "digital home for corporate customers". The MVP shipped in early 2021 without a long-term vision for the business goals:
@@ -41,7 +35,6 @@ Posti had launched OmaPosti Pro, a modern "digital home for corporate customers"
   src="/case-assets/channels-ecosystem-start.png"
   alt={`Channels ecosystem at the start of the project: seven separate products drawn as boxes — Posti.fi for anything not requiring a login, My Account for personal data, OmaPosti for ordering and tracking shipments, Glue for dropshipping and warehousing, Kontakti for registry and marketing, a Developer portal for API credentials, and Other services — joined by separate "log in" arrows rather than by one account.`}
   caption="CHANNELS ECOSYSTEM AT THE START OF THE PROJECT – or rather a bunch of standalone products"
-  dot="#E3732D"
 />
 
 </Chapter>
@@ -74,7 +67,6 @@ Posti had launched OmaPosti Pro, a modern "digital home for corporate customers"
   src="/case-assets/sme-customer-lifecycle.png"
   alt="The SME customer lifecycle map as a workshop board: five service stages across the top — initial need, research, customer acquisition, customer onboarding, growth — split into Before and During, with a swimlane under each for the customer's steps and then for telesales, sales support, customer service, marketing, communication, and invoicing and claims. Hundreds of sticky notes fill the lanes; three customer profiles sit in frames down the left."
   caption="SME CUSTOMER LIFECYCLE — mapped with operations, i.e. telesales, sales support and customer service"
-  dot="#E3732D"
 />
 
 </Chapter>
@@ -93,7 +85,6 @@ Co-created with stakeholders, the first draft is quite a mouthful — but it got
   src="/case-assets/vision-draft-1.png"
   alt={`Vision draft 1, marked up: the sentence "Your business' companion, supporting your growth with seamlessly interconnected, personalised solutions for your daily tasks." with four phrases circled in pink — your growth, interconnected, personalised, daily tasks — and an arrow from each to a note naming what it would take: customer data and segmentation, a collaboration model and team structure, and user insights into roles, needs, goals and JTBD.`}
   caption="VISION DRAFT 1 — co-created with stakeholders"
-  dot="#E3732D"
 />
 
 <div data-artefact-fallback>
@@ -108,7 +99,6 @@ If everything is eventually to live in one place, we needed to know how it looks
   src="/case-assets/tools-and-channels.png"
   alt="Tools and channels map: a logged-out business experience — discover the offering, become a customer, get help — leading through one access-management log-in into a logged-in business experience, where every job is grouped by what the user is trying to do (manage account, get help, pay, receive and support customers, manage stock, understand my business, market my business, send, sell) and each item is coloured by whether it lives in OmaPosti Pro or another touchpoint, with asterisks marking ideas not yet built."
   caption="TOOLS AND CHANNELS — every service in the channel it belongs to"
-  dot="#E3732D"
 />
 
 ### Concept exploration: user roles
@@ -119,7 +109,6 @@ Access rights are assigned per feature, per product — a long list, and not ver
   src="/case-assets/user-roles-access-model.png"
   alt="The user roles access model: a table with a row per role — warehouse, developer, customer service, sales, business, marketing, finance, and an All row at the foot — and two columns, the jobs that role can do and the channels it reaches. Warehouse creates shipments, prints labels, picks and packs; the developer gets API keys and installs plugins; everyone can get help and manage their own details. Titled 'Access rights follow the role, not the feature or the product'."
   caption="USER ROLES MATRIX — first version, rather a way to explain the concept of user roles than a foundation document"
-  dot="#E3732D"
 />
 
 This idea bundles them under labels matching people's roles in their company, "customer service" for example.
@@ -171,7 +160,6 @@ I built a story around a hypothetical customer and its three employees, and draf
   src="/case-assets/customer-story-journeys.png"
   alt="The customer story as a workshop board: twelve numbered narrative beats down the left — set up an online store, become a Posti customer, send shipments, troubleshoot fulfilment, set up a return contract, integrate an API, hire — each tagged with the touchpoints and teams it involves, and each opening out to the right into a step-by-step journey swimlane labelled Owner, Sender or Developer."
   caption="THE STORY — one hypothetical customer, three users, and their journeys through Posti's services"
-  dot="#E3732D"
 />
 
 <DashboardCarousel
