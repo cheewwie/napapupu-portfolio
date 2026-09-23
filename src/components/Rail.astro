@@ -77,18 +77,6 @@ const groups = [
         </div>
       ))
   }
-
-  <div class="rail-fill"></div>
-
-  <div class="availability">
-    <span class="availability-dot" aria-hidden="true"></span>
-    <span class="availability-label">Free from [Month]</span>
-  </div>
-  <a href="#contact" class="rail-cta">Get in touch</a>
-  <div class="rail-links">
-    <a href="#linkedin">LI</a>
-    <a href="#cv">CV</a>
-  </div>
 </aside>
 
 <style>
@@ -174,75 +162,6 @@ const groups = [
   }
 
   .chip:hover {
-    color: var(--c-orange);
-  }
-
-  .rail-fill {
-    flex-grow: 1;
-  }
-
-  .availability {
-    display: flex;
-    align-items: center;
-    gap: 9px;
-    margin-bottom: 20px;
-  }
-
-  .availability-dot {
-    width: 9px;
-    height: 9px;
-    border-radius: 999px;
-    background: var(--c-leaf);
-    display: inline-block;
-  }
-
-  .availability-label {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    letter-spacing: 0.06em;
-    color: var(--c-muted);
-  }
-
-  .rail-cta {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: var(--tap-min);
-    text-decoration: none;
-    text-align: center;
-    box-sizing: border-box;
-    background: var(--c-amber);
-    color: var(--c-ground);
-    font-size: 15px;
-    font-weight: var(--weight-strong);
-    padding: 14px;
-    border-radius: 999px;
-    margin-bottom: 18px;
-  }
-
-  .rail-cta:hover,
-  .rail-cta:focus-visible {
-    background: var(--c-orange);
-  }
-
-  .rail-links {
-    display: flex;
-    gap: 16px;
-    font-family: var(--font-mono);
-    font-size: 11px;
-    letter-spacing: 0.06em;
-  }
-
-  .rail-links a {
-    display: inline-flex;
-    align-items: center;
-    min-height: 24px;
-    color: var(--c-faint);
-    text-decoration: none;
-  }
-
-  .rail-links a:hover,
-  .rail-links a:focus-visible {
     color: var(--c-orange);
   }
 

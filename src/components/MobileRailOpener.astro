@@ -67,7 +67,9 @@ const { eyebrow, initialValue } = Astro.props;
       width: min(80%, 380px);
       z-index: 50;
       box-sizing: border-box;
-      min-height: var(--tap-min);
+      /* Fixed, not min — Footer.astro adds this same 76px as extra bottom
+         padding on mobile so its content clears this fixed-position bar. */
+      height: 76px;
       padding: 13px 18px max(29px, env(safe-area-inset-bottom, 29px));
       align-items: center;
       gap: 14px;
