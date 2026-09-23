@@ -11,6 +11,8 @@ import Chapter from '../../components/case/Chapter.astro';
 import Artefact from '../../components/case/Artefact.astro';
 import Callout from '../../components/case/Callout.astro';
 import Pullquote from '../../components/case/Pullquote.astro';
+import ResearchQuote from '../../components/case/ResearchQuote.astro';
+import ResearchQuotes from '../../components/case/ResearchQuotes.astro';
 import DashboardCarousel from '../../components/case/DashboardCarousel.astro';
 import Gated from '../../components/case/Gated.astro';
 import Footer from '../../components/Footer.astro';
@@ -38,7 +40,7 @@ const { Content } = await render(entry);
 const nextRef = String(next.data.order).padStart(2, '0');
 
 // Available in every case-study MDX file without an import.
-const components = { Chapter, Artefact, Callout, Pullquote, DashboardCarousel, Gated };
+const components = { Chapter, Artefact, Callout, Pullquote, ResearchQuote, ResearchQuotes, DashboardCarousel, Gated };
 ---
 
 <Layout title={`${data.title} — Alice Winter`} description={data.dek}>

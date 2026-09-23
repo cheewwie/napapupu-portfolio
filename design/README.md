@@ -17,6 +17,7 @@ Canvas: https://claude.ai/artifact/K5EYevqnGK3ip3WTTiQgUj
 | `tokens.css` | Colour and type, with each accent's role written in. **Read this first.** |
 | `brief.md` | The agreed direction: concept, colour, type, the mark, layout, confidentiality. |
 | `annotation-pattern.md` | How case-study artefacts are annotated, if you generate more. |
+| `quote-pattern.md` | Research quotes vs colleague feedback: the spec, the two components, and existing content that doesn't follow it yet. Added 23 Sept. |
 | `brand/mark.svg` | The mark, body in ivory. For `<img src>` and favicons. |
 | `brand/mark-inline.svg` | The mark, body in `currentColor`. For inlining in a component. |
 | `brand/README.md` | Which of the two to use, and the mark's rules. |
@@ -27,6 +28,7 @@ Canvas: https://claude.ai/artifact/K5EYevqnGK3ip3WTTiQgUj
 | `reference/m-home-panel.html` | Mobile home, rail open. |
 | `reference/m-case.html` | Mobile case study, rail closed. |
 | `reference/m-case-panel.html` | Mobile case study, rail open. |
+| `reference/d-quotes.html` | The two quote styles side by side and in a chapter. Added 23 Sept (version 584). Research quote text is placeholder. |
 | `content/projects.json` | The six index rows, exactly as the design carries them. |
 | `content/also.json` | The three "Also" rows. Placeholder copy. |
 | `assets/` | The nine case-study artefact images, at their native size. |
@@ -127,6 +129,13 @@ same flag rather than being two pieces of content.
   Opening should push a history entry so the back gesture closes it; the page
   behind needs `inert`; focus returns to the opener on close. The chapter value
   tracks scroll (IntersectionObserver over the chapter articles).
+
+- **Two kinds of quote.** Users' words (research) and colleagues' words
+  (feedback) are styled differently and must not share a component. Who is
+  speaking decides which one, not the chapter they appear in. Spec in
+  `quote-pattern.md`, snapshot in `reference/d-quotes.html`. The Snowsports
+  fan quotes use `<Callout>` as a stand-in until the research quote component
+  exists. Alice will switch them over herself.
 
 ## Known dirt — read before porting
 
