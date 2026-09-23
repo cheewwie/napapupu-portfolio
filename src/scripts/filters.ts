@@ -40,7 +40,7 @@ export function initFilters(): void {
     return rows.filter((row) => rowMatches(row, probe)).length;
   }
 
-  function render(): void {
+  const render = (): void => {
     let visible = 0;
     for (const row of rows) {
       const match = rowMatches(row, state);
@@ -73,7 +73,7 @@ export function initFilters(): void {
         openerValue.textContent = `${visible} of ${total} · ${label}`;
       }
     }
-  }
+  };
 
   for (const chip of chips) {
     chip.addEventListener('click', () => {

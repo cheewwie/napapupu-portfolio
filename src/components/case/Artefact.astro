@@ -3,11 +3,11 @@ export interface Props {
   src: string;
   alt: string;
   caption: string;
-  /** Defaults to the project's own key colour. */
+  /** Defaults to the project's own key colour, set as --case-dot by the case-study page. */
   dot?: string;
 }
 
-const { src, alt, caption, dot = 'var(--c-amber)' } = Astro.props;
+const { src, alt, caption, dot = 'var(--case-dot)' } = Astro.props;
 ---
 
 <figure class="artefact" data-artefact>

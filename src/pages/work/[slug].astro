@@ -7,6 +7,12 @@ import SpecStrip from '../../components/case/SpecStrip.astro';
 import HeroFigure from '../../components/case/HeroFigure.astro';
 import CaseRail from '../../components/case/CaseRail.astro';
 import NextCase from '../../components/case/NextCase.astro';
+import Chapter from '../../components/case/Chapter.astro';
+import Artefact from '../../components/case/Artefact.astro';
+import Callout from '../../components/case/Callout.astro';
+import Pullquote from '../../components/case/Pullquote.astro';
+import DashboardCarousel from '../../components/case/DashboardCarousel.astro';
+import Gated from '../../components/case/Gated.astro';
 import Footer from '../../components/Footer.astro';
 import MobileRailOpener from '../../components/MobileRailOpener.astro';
 import { getWorkEntries } from '../../lib/content';
@@ -30,6 +36,9 @@ const { entry, next } = Astro.props;
 const { data } = entry;
 const { Content } = await render(entry);
 const nextRef = String(next.data.order).padStart(2, '0');
+
+// Available in every case-study MDX file without an import.
+const components = { Chapter, Artefact, Callout, Pullquote, DashboardCarousel, Gated };
 ---
 
 <Layout title={`${data.title} — Alice Winter`} description={data.dek}>
@@ -46,8 +55,8 @@ const nextRef = String(next.data.order).padStart(2, '0');
       />
       <SpecStrip client={data.client} role={data.role} duration={data.duration} outcome={data.outcome} access={data.access} />
       <HeroFigure caption={data.heroCaption} dot={data.dot} src={data.heroSrc} alt={data.heroAlt} />
-      <section class="chapters">
-        <Content />
+      <section class="chapters" style={{ '--case-dot': data.dot }}>
+        <Content components={components} />
       </section>
       <NextCase title={next.data.title} slug={next.id} ref={nextRef} />
       <Footer />
