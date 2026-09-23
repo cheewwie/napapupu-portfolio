@@ -23,9 +23,11 @@ jobs:
 
       - name: Install, build, and upload your site
         uses: withastro/action@v3
-        # By default this action installs dependencies, runs `astro build`,
-        # and uploads ./dist as the Pages artifact. Add `path`, `node-version`
-        # or `package-manager` inputs here only if your project needs them.
+        with:
+          # The action's default runner Node (20) is older than Astro now
+          # requires (>=22.12.0) — every prior run failed at `astro build`
+          # for exactly this reason. Matches the Node version used locally.
+          node-version: 22
 
   deploy:
     needs: build
