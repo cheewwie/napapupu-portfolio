@@ -18,16 +18,16 @@ duration: June 2023 - January 2024
 outcome: New native app released on iOS and Android
 heroCaption: FIS NEW APP IN JANUARY 2024 — unlocking a new way to experience competitive snow sports.
 heroSrc: /case-assets/FIS-hero.jpg
-heroAlt: ""
+heroAlt: "Five phones fanned out on a dark green background with a blue sphere behind them, each showing a screen of the new FIS app. The centre phone shows the Home feed, with a live event and the World Cup leaders below it. Around it: an athlete profile for Mikaela Shiffrin, an onboarding screen, a video feed, and a results table."
 ---
 
 <Chapter n="01" title="Context">
 
-The International Ski Federation (FIS) reached out to us to redesign their app from scratch, with the goals of:
+The International Ski Federation (FIS) asked us to redesign their app from scratch, to:
 
-- exiting their previous vendor lock
-- modernising the UI
-- improving the functionality
+- get out of their previous vendor lock-in
+- modernise the UI
+- improve the functionality
 
 <Callout>How might we leverage the new app to improve the end-to-end FIS user experience and their retention?</Callout>
 
@@ -41,61 +41,61 @@ The International Ski Federation (FIS) reached out to us to redesign their app f
 >
 
 ### Concept kickoff
-I organised and facilitated a workshop with the client stakeholders, some of our engineers and my designer pair.  
-We covered the basics: goals, target audience, and prioritising the ideas within the agreed scope, with the flexibility to update scope and priorities later.
+I organised and facilitated a workshop with the client's stakeholders, some of our engineers and my design pair.  
+We covered goals, target audience and priorities within the agreed scope, knowing both could change later.
 
 <Artefact
   src="/case-assets/FIS-workshop-outcome.png"
-  alt={``}
-  caption="OUTCOME OF THE STAKEHOLDERS WORKSHOP — from there we understood better what to do, for whom, and why"
+  alt={`The outcome of the stakeholder workshop. Three panels across the top. KPIs: increase MAU, satisfaction and engagement, higher retention, push notification subscriptions, positive PR, a happy FIS stakeholder and successful commercial integration with sponsors, with a next step for Reaktor to run a workshop on measuring success. Target audience: the streamers (28%, mostly in North America, who want to watch competitions live or as re-runs) and the casual followers (17%, who follow athletes more than the sport), with similar needs at different levels of engagement and the aim to convert casuals into streamers. The vision statement: “Your digital companion for snow sports events and athletes, providing the latest insightful and surprising content, digital experiences, results and schedules in a personalised, contextualised and seamless way.” Below, content and priorities: the product soul (follow live event results, find upcoming events, learn about an athlete, follow an athlete), then nineteen milestones in priority order, from engaging content and latest videos down to finding info about FIS. A next steps column gives user journeys, navigation and IA, and behind-the-curtain solutions to Reaktor, and data on the current app to FIS.`}
+  caption="OUTCOME OF THE STAKEHOLDER WORKSHOP — what to do, for whom, and why"
 />
 
 ### Business insights
 
-- New target audience is younger and more casually following snow sports, wants more media content and follows more than one discipline
-- New app needs to support the old features for the existing audience, and needs data and stats in real time
-- Having 2 separate apps is not an option
+- The new audience is younger, follows snow sports more casually and across several disciplines, and wants more media content
+- The existing audience still needs the old features, plus data and stats in real time
+- Two separate apps are not an option
 
 ### Technical insights
 
-- Get data from one backend, media content from another backend (CMS), that both also will feed the new website
+- Data comes from one backend and media from another (a CMS), and both also feed the new website
 
 </Chapter>
 
 <Chapter
   n="03"
   title="Explore"
-  did={['- Sketch, sketch, sketch', '- Information architecture', '- Concept testing with snow sports fans']}
+  did={['Sketch, sketch, sketch', 'Information architecture', 'Concept testing with snow sports fans']}
 >
 
 ### Information architecture
 
-We aimed to enable fans to follow more than one discipline, without having to constantly swap back and forth.  
-For that we needed a dynamic structure where all the content would be filtered according to the fan’s preferences. I came up with the “interconnected” concept where different types of concept can be found via different routes.
+Fans should be able to follow more than one discipline without constantly switching back and forth.  
+That needed a dynamic structure, with all content filtered by the fan’s preferences. I came up with the “interconnected” concept, where each type of content can be reached by more than one route.
 
 <Artefact
   src="/case-assets/FIS-interconnected-IA.png"
-  alt={``}
+  alt={`The interconnected information architecture, with the principle “Whatever path the fan can imagine taking to access content and knowledge, that path is available.” Three columns. Entry points, the differently filtered landing pages the fan starts from: Home, Find, Live and Watch. Content, split into data (calendar and schedule, results, live ticker, standings) and media (short format such as stories, long format such as articles and replays, livestream). Micro landing pages, where the fan can follow a specific athlete or calendar event, with Disciplines marked in pink as an open question. Below, the personalisation functions: onboarding and preferences, notifications and favourites. A footnote says this is a simplified picture, not a full map of the app.`}
   caption="INTERCONNECTED INFORMATION ARCHITECTURE — an app where you can navigate vertically and horizontally"
 />
 
-With my design pair, we wireframed all the main parts of the new app to get an understanding of the user flows and navigation.
+With my design pair, I wireframed the main parts of the app to work out the user flows and navigation.
 
 <Artefact
   src="/case-assets/FIS-wireframes.png"
-  alt={``}
-  caption="WIREFRAMES — some of our initial sketches of the main sections of the new app"
+  alt={`A wall of greyscale wireframes on a whiteboard canvas, covered in sticky notes. Down the left, under Find: calendar, athletes finder and standings, with a couple of hand-drawn standings sketches. Lines lead from each finder into a row of detail screens: the event page (schedule, overview, athletes and live results), labelled “Learn about an event”, and the athlete page (overview, results, standings, cup standings, highlights, news and social), labelled “Learn about an athlete”, with bar and pie charts of an athlete’s stats and a notification settings screen. A red line marks the fold across the athlete screens.`}
+  caption="WIREFRAMES — early sketches of the app’s main sections"
 />
 
 ### Backend structure
 
-We needed to work with two backends (one of which we were building anew) and both backends needed to work with the new website we were building in parallel. I also supported their designer when needed, so that we would produce a coherent system.
-I outlined the different types, categories and other parameters for the media content, so that all four parts would work together. That's how I discovered we needed a matrix architecture, not a tree.
+The app had to work with two backends, one of them brand new, and both also fed a new website being built in parallel. I supported the website’s designer when needed, to keep the whole system coherent.
+I mapped the types, categories and other parameters of the media content so that all four parts would fit together. That's how I found out we needed a matrix architecture, not a tree.
 
 <Artefact
   src="/case-assets/FIS-backend-architecture.png"
-  alt={``}
-  caption="MAPPING THE MEDIA PARAMETERS — and trying to make sense of how the backends could work"
+  alt={`The media parameters, with pink marking what was still open. Four columns. Content items: article, image, video and in-app story from Storyblok, and calendar event, athlete page and standing from the FIS database, with the question “How do we deal with those?”. Categories: highlight, livestream, recap, interview. Levels: Olympic Winter Games, World Cup, World Ski Championships, Europa Cup, Nor-Am Cup and more. Disciplines: cross-country, jump, combined, alpine, freeski and more. Two open questions underneath. On structure: naming conventions, a hierarchy or levels, sub-categories as subjects and categories as disciplines, and “Matrix, not tree: is that a possible way to do it?”. On metadata: what metadata do we need?`}
+  caption="MAPPING THE MEDIA PARAMETERS — making sense of how the backends could work"
 />
 
 </Chapter>
@@ -103,14 +103,14 @@ I outlined the different types, categories and other parameters for the media co
 <Chapter
   n="04"
   title="Deliver"
-  did={['- Development planning', '- Handoff high-fidelity design', '- Developer support']}
+  did={['Development planning', 'Handoff high-fidelity design', 'Developer support']}
 >
 
 ### Refining the details
 
-From the wireframes, we refined and detailed our sketches. I focused more on interactions and UX while my design pair focused on refining visuals and art direction.  
-We used the existing brand book as a guide, but were given complete freedom to modernise the brand identity (except the logo).  
-Our team had then ready-to-develop mockups to work with.
+We then turned the wireframes into detailed designs. I focused on interactions and UX, my design pair on visuals and art direction.  
+The existing brand book was our guide, but we had complete freedom to modernise the brand identity (except the logo).  
+The result: ready-to-develop mockups for the team.
 
 <Pullquote attribution="My design pair - Reaktor">
 "Alice's combination of self-confidence, fearless attitude, attention to detail, willingness and ability to test services and collect user feedback make her a truly valuable and professional team player. She has abilities and character that quite often lead and belong to positions that define how products and services are built."
@@ -118,7 +118,7 @@ Our team had then ready-to-develop mockups to work with.
 
 <Artefact
   src="/case-assets/FIS-mockups.jpg"
-  alt={``}
+  alt={`High-fidelity screens of the FIS app, tilted in a grid on the project blue: the schedule for an Audi FIS World Cup, day by day; a results table with flags and times; an onboarding screen; Explore, listing alpine World Cup events in Val d’Isère; the home feed with a live event and the World Cup leaders; Mikaela Shiffrin’s athlete profile with her latest results and achievements; and a latest videos feed.`}
   caption="FINAL LAYOUTS READY FOR DEVELOPMENT — and implemented in the new app"
 />
 
@@ -128,7 +128,7 @@ Our team had then ready-to-develop mockups to work with.
 
 ### Fans and athletes feedback
 
-We tested our concept via a prototype and, once it was available, a TestFlight app. The overall feedback was very positive, but also helped us make the necessary changes.
+We tested the concept with a prototype, then with a TestFlight app. Feedback was very positive, and it also showed us what needed changing.
 
 <ResearchQuotes>
   <ResearchQuote source="Cross-country skiing fan" method="Interview" year={2023}>It would be awesome to watch official FIS livestreams in the app.</ResearchQuote>
@@ -137,15 +137,15 @@ We tested our concept via a prototype and, once it was available, a TestFlight a
   <ResearchQuote source="Cross-country skiing fan" method="Interview" year={2023}>When onsite for lower level comps I want the live results!!</ResearchQuote>
 </ResearchQuotes>
 
-We also got very positive feedback from athletes at competitions, via our stakeholders.
+Our stakeholders also passed on very positive feedback from athletes at competitions.
 
 <Pullquote attribution="Marketing Manager · FIS" >
 It’s really cool and big step forward and your design mock up’s in the first place played a big role that we came together to deliver this new app in the first place!
 </Pullquote>
 
-The project has since passed on to another team, but last time I checked it was still carrying the same vision that we designed! Check it out on [Android](https://play.google.com/store/apps/details?id=com.fis_ski.mobile_fis_ski&pli=1) or [iOS](https://apps.apple.com/us/app/fis-official-ski-snowboard/id1161730142).
+The project has since moved to another team, but last time I checked, it still carried the vision we designed! Check it out on [Android](https://play.google.com/store/apps/details?id=com.fis_ski.mobile_fis_ski&pli=1) or [iOS](https://apps.apple.com/us/app/fis-official-ski-snowboard/id1161730142).
 
-Reaktor has also written a [case study](https://www.reaktor.com/case-studies/fis/) about the project, which you can read for more details.
+For more detail, read Reaktor’s [case study](https://www.reaktor.com/case-studies/fis/) about the project.
 
 </Chapter>
 
@@ -153,7 +153,7 @@ Reaktor has also written a [case study](https://www.reaktor.com/case-studies/fis
 
 ### People matter
 
-I already knew that, but it showed particularly in this project. While not the most challenging in substance, it wasn't without its challenges. Having a whole team supporting me, and me supporting them, is my most precious takeaway from this project.
+I already knew it, but this project showed it especially clearly. It wasn't the hardest in substance, but it had its challenges. A whole team supporting me, and me supporting them, is what I value most from it.
 
 <Pullquote attribution="Fullstack Developer · Reaktor" >
 Work-wise I've really enjoyed her design-work! I feel like Alice was one of the key factors that made the project enjoyable.
@@ -169,7 +169,7 @@ Thank you Alice for all your work, help and laughs!
 
 ### Choosing my battles
 
-Running a project from scratch without notice of the absence of a project manager is not the easiest thing. We had to improvise, one of us took the hat and we did our best to support them. I took a little too much on myself at times, and didn’t have anymore the bandwidth to be a designer – and burnt myself out a little.
+Starting a project from scratch and finding out there’s no project manager isn’t easy. We improvised: one of us took on the role, and the rest of us supported them. At times I took on too much, ran out of bandwidth for design work, and burnt out a little.
 
 </Chapter>
 
