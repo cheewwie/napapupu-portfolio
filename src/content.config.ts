@@ -24,7 +24,7 @@ const work = defineCollection({
     title: z.string(),
     blurb: z.string(),
     sectors: z.array(z.string()).default([]),
-    user: z.enum(['Enterprise', 'Consumer']),
+    user: z.enum(['Pro', 'Consumer']),
     devices: z.array(z.enum(['Desktop', 'Mobile', 'Embedded'])).min(1),
     platform: z.string(),
     year: z.string(),
