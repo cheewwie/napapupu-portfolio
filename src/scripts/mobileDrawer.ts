@@ -15,7 +15,7 @@ export function initMobileDrawer(): void {
 
   let isOpen = false;
 
-  function open(): void {
+  const open = (): void => {
     if (isOpen) return;
     isOpen = true;
     rail.classList.add('is-open');
@@ -29,9 +29,9 @@ export function initMobileDrawer(): void {
     // would drag the (still-scrolled) page behind the scrim back to that
     // anchor the moment it receives focus.
     rail.focus();
-  }
+  };
 
-  function close(fromPopstate = false): void {
+  const close = (fromPopstate = false): void => {
     if (!isOpen) return;
     isOpen = false;
     rail.classList.remove('is-open');
@@ -41,7 +41,7 @@ export function initMobileDrawer(): void {
     main?.removeAttribute('inert');
     opener.focus();
     if (!fromPopstate) history.back();
-  }
+  };
 
   opener.addEventListener('click', () => (isOpen ? close() : open()));
   scrim.addEventListener('click', () => close());
