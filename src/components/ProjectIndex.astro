@@ -80,6 +80,7 @@ const fieldSlug = (value: string) => slugify(value);
                     {
                       'idx-access-pill--open': project.access === 'Open',
                       'idx-access-pill--gated': project.access === 'On request',
+                      'idx-access-pill--restricted': project.access === 'Restricted',
                     },
                   ]}
                 >
@@ -279,11 +280,21 @@ const fieldSlug = (value: string) => slugify(value);
     background: var(--c-hairline);
   }
 
-  /* Leaf is status — "open" is exactly its job. Anything else (Coming soon)
-     keeps the neutral base pill. */
+  /* Leaf is status — "open" is exactly its job. Coming soon keeps the
+     neutral base pill. */
   .idx-access-pill--open {
     color: var(--c-ground);
     background: var(--c-leaf);
+  }
+
+  /* Restricted: the NDA allows no more than the blurb. Outlined rather than
+     filled so it reads apart from Coming soon without borrowing an accent.
+     Padding drops 1px to absorb the border and keep the pill's size. */
+  .idx-access-pill--restricted {
+    padding: 5px 10px;
+    border: 1px solid var(--c-body-dim);
+    color: var(--c-body-dim);
+    background: transparent;
   }
 
   .idx-access-pill--gated {
