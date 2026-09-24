@@ -32,8 +32,10 @@ const work = defineCollection({
     platform: z.string(),
     year: z.string(),
     /** "Coming soon": a blurb and some context only, while the NDA is
-     *  still being worked out. Listed and linked like any other row. */
-    access: z.enum(['Open', 'On request', 'Coming soon']),
+     *  still being worked out. "Restricted": the NDA allows nothing more
+     *  than that blurb, for good. Both are listed and linked like any other
+     *  row. */
+    access: z.enum(['Open', 'On request', 'Coming soon', 'Restricted']),
     dot: z.string(),
     order: z.number(),
 
