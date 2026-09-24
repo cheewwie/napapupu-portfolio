@@ -17,6 +17,9 @@ import { glob } from 'astro/loaders';
  * Callout, DashboardCarousel, Gated). Chapters are content, not a component
  * system to model in advance — see design/README.md's closing note.
  */
+/** A left-blank YAML field (`heroSrc:`) arrives as null — treat it as omitted. */
+const optionalString = z.preprocess((v) => (v === null || v === '' ? undefined : v), z.string().optional());
+
 const work = defineCollection({
   loader: glob({ pattern: '*.{md,mdx}', base: './src/content/work' }),
   schema: z.object({
@@ -28,7 +31,9 @@ const work = defineCollection({
     devices: z.array(z.enum(['Desktop', 'Mobile', 'Embedded'])).min(1),
     platform: z.string(),
     year: z.string(),
-    access: z.enum(['Open', 'On request']),
+    /** "Coming soon": a blurb and some context only, while the NDA is
+     *  still being worked out. Listed and linked like any other row. */
+    access: z.enum(['Open', 'On request', 'Coming soon']),
     dot: z.string(),
     order: z.number(),
 
@@ -41,9 +46,10 @@ const work = defineCollection({
     duration: z.string(),
     outcome: z.string(),
     heroCaption: z.string(),
-    /** Omit both to fall back to the abstract drawn placeholder hero. */
-    heroSrc: z.string().optional(),
-    heroAlt: z.string().optional(),
+    /** Leave heroSrc blank (or omit it) and the page has no hero at all —
+     *  the spec strip runs straight into the chapters. */
+    heroSrc: optionalString,
+    heroAlt: optionalString,
   }),
 });
 

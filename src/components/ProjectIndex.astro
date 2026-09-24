@@ -74,7 +74,15 @@ const fieldSlug = (value: string) => slugify(value);
               </span>
               <span class="idx-field idx-field--access">
                 <span class="idx-field-label">{copy.columns.access}</span>
-                <span class:list={['idx-access-pill', { 'idx-access-pill--gated': project.access === 'On request' }]}>
+                <span
+                  class:list={[
+                    'idx-access-pill',
+                    {
+                      'idx-access-pill--open': project.access === 'Open',
+                      'idx-access-pill--gated': project.access === 'On request',
+                    },
+                  ]}
+                >
                   {project.access}
                 </span>
               </span>
@@ -268,6 +276,13 @@ const fieldSlug = (value: string) => slugify(value);
     justify-self: start;
     color: var(--c-muted);
     background: var(--c-hairline);
+  }
+
+  /* Leaf is status — "open" is exactly its job. Anything else (Coming soon)
+     keeps the neutral base pill. */
+  .idx-access-pill--open {
+    color: var(--c-ground);
+    background: var(--c-leaf);
   }
 
   .idx-access-pill--gated {

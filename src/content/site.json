@@ -72,7 +72,7 @@
     "filters": {
       "access": {
         "label": "Access",
-        "options": { "all": "Everything", "open": "Open", "on-request": "On request" }
+        "options": { "all": "Everything", "open": "Open", "on-request": "On request", "coming-soon": "Coming soon" }
       },
       "user": {
         "label": "User",
