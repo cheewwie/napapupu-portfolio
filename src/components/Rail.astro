@@ -14,10 +14,14 @@ const SHOW_ON_REQUEST = false;
 // shown for them live in src/content/site.json.
 const { filters } = site.rail;
 
+// "Coming soon" only earns a chip while at least one project carries it.
+const hasComingSoon = projects.some((p) => p.access === 'Coming soon');
+
 const accessOptions = [
   { value: 'all', label: filters.access.options.all },
   { value: 'open', label: filters.access.options.open },
   ...(SHOW_ON_REQUEST ? [{ value: 'on-request', label: filters.access.options['on-request'] }] : []),
+  ...(hasComingSoon ? [{ value: 'coming-soon', label: filters.access.options['coming-soon'] }] : []),
 ];
 
 const userOptions = (['all', 'pro', 'consumer'] as const).map((value) => ({

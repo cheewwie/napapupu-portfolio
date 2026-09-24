@@ -55,7 +55,7 @@ const components = { Chapter, Artefact, Callout, Pullquote, ResearchQuote, Resea
         dot={data.dot}
       />
       <SpecStrip client={data.client} role={data.role} duration={data.duration} outcome={data.outcome} access={data.access} />
-      <HeroFigure caption={data.heroCaption} dot={data.dot} src={data.heroSrc} alt={data.heroAlt} />
+      {data.heroSrc && <HeroFigure caption={data.heroCaption} dot={data.dot} src={data.heroSrc} alt={data.heroAlt} />}
       <section class="chapters" style={{ '--case-dot': data.dot }}>
         <Content components={components} />
       </section>
